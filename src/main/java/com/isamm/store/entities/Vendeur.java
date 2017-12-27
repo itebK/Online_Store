@@ -7,48 +7,42 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-public class Client implements Serializable {
+public class Vendeur implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idClient;
+	private Long idVendeur;
 	@Size(min = 5, max = 20)
-	private String nomClient;
+	private String nomVendeur;
 	private String adresse;
 	@Email
 	private String email;
 	private String tel;
-	@OneToMany(mappedBy = "client")
-	private Collection<Commande> commandes;
+	@OneToMany
+	@JoinColumn(name = "idRole")
+	private Collection<Role> roles;
 
-	public Client(String nomClient, String adresse, String email, String tel) {
-		super();
-		this.nomClient = nomClient;
-		this.adresse = adresse;
-		this.email = email;
-		this.tel = tel;
+	public Long getIdVendeur() {
+		return idVendeur;
 	}
 
-	public Long getIdClient() {
-		return idClient;
+	public void setIdVendeur(Long idVendeur) {
+		this.idVendeur = idVendeur;
 	}
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
+	public String getNomVendeur() {
+		return nomVendeur;
 	}
 
-	public String getNomClient() {
-		return nomClient;
-	}
-
-	public void setNomClient(String nomClient) {
-		this.nomClient = nomClient;
+	public void setNomVendeur(String nomVendeur) {
+		this.nomVendeur = nomVendeur;
 	}
 
 	public String getAdresse() {
@@ -75,27 +69,28 @@ public class Client implements Serializable {
 		this.tel = tel;
 	}
 
-	public Collection<Commande> getCommandes() {
-		return commandes;
+	public Collection<Role> getRoles() {
+		return roles;
 	}
 
-	public void setCommandes(Collection<Commande> commandes) {
-		this.commandes = commandes;
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
 	}
 
-	public Client(Long idClient, String nomClient, String adresse, String email, String tel,
-			Collection<Commande> commandes) {
+	public Vendeur(Long idVendeur, String nomVendeur, String adresse, String email, String tel,
+			Collection<Role> roles) {
 		super();
-		this.idClient = idClient;
-		this.nomClient = nomClient;
+		this.idVendeur = idVendeur;
+		this.nomVendeur = nomVendeur;
 		this.adresse = adresse;
 		this.email = email;
 		this.tel = tel;
-		this.commandes = commandes;
+		this.roles = roles;
 	}
 
-	public Client() {
+	public Vendeur() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 }

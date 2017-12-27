@@ -8,20 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "produits")
-public class Produit implements Serializable {
+public class Article implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProduit;
-	@NotEmpty
-	@Size(min = 4, max = 15)
+	private Long idArticle;
 	private String designation;
 	private String description;
 	private double prix;
@@ -31,42 +24,17 @@ public class Produit implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idCategorie")
 	private Categorie categorie;
+	@ManyToOne
+	@JoinColumn(name = "idBoutique")
+	private Boutique boutique;
+
 	// private Collection<LigneCommande> lignes;
-
-	public Produit() {
-		super();
+	public Long getIdArticle() {
+		return idArticle;
 	}
 
-	public Produit(String designation, String description, double prix, int quantite, boolean selectionne,
-			String photo) {
-		super();
-		this.designation = designation;
-		this.description = description;
-		this.prix = prix;
-		this.quantite = quantite;
-		this.selectionne = selectionne;
-		this.photo = photo;
-	}
-
-	public Produit(Long idProduit, String designation, String description, double prix, int quantite,
-			boolean selectionne, String photo, Categorie categorie) {
-		super();
-		this.idProduit = idProduit;
-		this.designation = designation;
-		this.description = description;
-		this.prix = prix;
-		this.quantite = quantite;
-		this.selectionne = selectionne;
-		this.photo = photo;
-		this.categorie = categorie;
-	}
-
-	public Long getIdProduit() {
-		return idProduit;
-	}
-
-	public void setIdProduit(Long idProduit) {
-		this.idProduit = idProduit;
+	public void setIdArticle(Long idArticle) {
+		this.idArticle = idArticle;
 	}
 
 	public String getDesignation() {
@@ -123,6 +91,33 @@ public class Produit implements Serializable {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+	public Boutique getBoutique() {
+		return boutique;
+	}
+
+	public void setBoutique(Boutique boutique) {
+		this.boutique = boutique;
+	}
+
+	public Article(Long idArticle, String designation, String description, double prix, int quantite,
+			boolean selectionne, String photo, Categorie categorie, Boutique boutique) {
+		super();
+		this.idArticle = idArticle;
+		this.designation = designation;
+		this.description = description;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.selectionne = selectionne;
+		this.photo = photo;
+		this.categorie = categorie;
+		this.boutique = boutique;
+	}
+
+	public Article() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 }

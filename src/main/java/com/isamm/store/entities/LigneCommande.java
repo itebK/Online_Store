@@ -20,7 +20,7 @@ public class LigneCommande implements Serializable {
 	private Commande commande;
 	@ManyToOne
 	@JoinColumn(name = "idProduit")
-	private Produit produit;
+	private Article produit;
 	private int quantite;
 	private double prix;
 
@@ -40,11 +40,11 @@ public class LigneCommande implements Serializable {
 		this.commande = commande;
 	}
 
-	public Produit getProduit() {
+	public Article getProduit() {
 		return produit;
 	}
 
-	public void setProduit(Produit produit) {
+	public void setProduit(Article produit) {
 		this.produit = produit;
 	}
 
@@ -68,7 +68,7 @@ public class LigneCommande implements Serializable {
 		super();
 	}
 
-	public LigneCommande(Commande commande, Produit produit, int quantite, int prix) {
+	public LigneCommande(Commande commande, Article produit, int quantite, int prix) {
 		super();
 		this.commande = commande;
 		this.produit = produit;
