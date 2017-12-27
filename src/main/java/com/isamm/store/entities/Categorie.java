@@ -9,13 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "categorie")
 public class Categorie implements Serializable {
 
 	@Id
@@ -29,23 +27,22 @@ public class Categorie implements Serializable {
 	@Lob
 	private byte[] photo;
 	private String nomPhoto;
-
 	@OneToMany(mappedBy = "categorie")
-	private Collection<Produit> produits;
+	private Collection<Article> articles;
 
 	public Categorie() {
 		super();
 	}
 
 	public Categorie(Long idCategorie, String nomCategorie, String description, byte[] photo, String nomPhoto,
-			Collection<Produit> produits) {
+			Collection<Article> articles) {
 		super();
 		this.idCategorie = idCategorie;
 		this.nomCategorie = nomCategorie;
 		this.description = description;
 		this.photo = photo;
 		this.nomPhoto = nomPhoto;
-		this.produits = produits;
+		this.articles = articles;
 	}
 
 	public Categorie(String nomCategorie, String description, byte[] photo, String nomPhoto) {
@@ -96,12 +93,12 @@ public class Categorie implements Serializable {
 		this.nomPhoto = nomPhoto;
 	}
 
-	public Collection<Produit> getProduits() {
-		return produits;
+	public Collection<Article> getArticles() {
+		return articles;
 	}
 
-	public void setProduits(Collection<Produit> produits) {
-		this.produits = produits;
+	public void setArticles(Collection<Article> articles) {
+		this.articles = articles;
 	}
 
 }

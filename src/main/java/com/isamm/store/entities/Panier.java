@@ -9,9 +9,9 @@ public class Panier implements Serializable {
 
 	private Map<Long, LigneCommande> items = new HashMap<Long, LigneCommande>();
 
-	public void addArticle(Produit p, int quantite) {
-		if (items.get(p.getIdProduit()) != null) {
-			items.get(p.getIdProduit()).setQuantite(quantite + items.get(p.getIdProduit()).getQuantite());
+	public void addArticle(Article p, int quantite) {
+		if (items.get(p.getIdArticle()) != null) {
+			items.get(p.getIdArticle()).setQuantite(quantite + items.get(p.getIdArticle()).getQuantite());
 		} else {
 			LigneCommande ligneCommande = new LigneCommande();
 			ligneCommande.setProduit(p);
@@ -37,8 +37,8 @@ public class Panier implements Serializable {
 		return items.size();
 	}
 
-	public void deleteProduit(Long idProduit) {
-		items.remove(idProduit);
+	public void deleteArticle(Long idArticle) {
+		items.remove(idArticle);
 	}
 
 }
