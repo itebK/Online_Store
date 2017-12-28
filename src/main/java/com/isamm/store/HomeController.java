@@ -23,7 +23,7 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	@RequestMapping(value = "*", method = RequestMethod.GET)
 	public String error(Locale locale, Model model) {
 		logger.info("Welcome 404 not found! The client locale is {}.", locale);
 
