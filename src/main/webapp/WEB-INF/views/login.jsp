@@ -30,7 +30,7 @@
       <div class="container padding-bottom-3x mb-2">
         <div class="row">
           <div class="col-md-6">
-            <form class="login-box" method="post">
+            <form class="login-box" method="post" action="j_spring_security_check">
               <div class="row margin-bottom-1x">
                 <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block facebook-btn" href="#"><i class="socicon-facebook"></i>&nbsp;Facebook login</a></div>
                 <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block twitter-btn" href="#"><i class="socicon-twitter"></i>&nbsp;Twitter login</a></div>
@@ -38,10 +38,11 @@
               </div>
               <h4 class="margin-bottom-1x">Or using form below</h4>
               <div class="form-group input-group">
-                <input class="form-control" type="email" placeholder="Email" required><span class="input-group-addon"><i class="icon-mail"></i></span>
+                <input class="form-control" type="text" placeholder="Email" name="j_username" required>
+                <span class="input-group-addon"><i class="icon-mail"></i></span>
               </div>
               <div class="form-group input-group">
-                <input class="form-control" type="password" placeholder="Password" required><span class="input-group-addon"><i class="icon-lock"></i></span>
+                <input class="form-control" type="password" placeholder="Password"  name="j_password" required><span class="input-group-addon"><i class="icon-lock"></i></span>
               </div>
               <div class="d-flex flex-wrap justify-content-between padding-bottom-1x">
                 <label class="custom-control custom-checkbox">
@@ -49,7 +50,7 @@
                 </label><a class="navi-link" href="recovery-password">Forgot password?</a>
               </div>
               <div class="text-center text-sm-right">
-                <button class="btn btn-primary margin-bottom-none" type="submit">Login</button>
+                <button class="btn btn-primary margin-bottom-none" type="submit" value="Login">Login</button>
               </div>
             </form>
           </div>

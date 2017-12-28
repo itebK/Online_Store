@@ -46,17 +46,19 @@
 	 </bean> 
 	 
 	 
-	 <!-- <s:http> <s:intercept-url pattern="/vendeur/**" access="VENDEUR_ROLE"/> 
-	 <s:intercept-url pattern="/client/**" access="CLIENT_ROLE"/> 
-	 <s:form-login login-page="/login" default-target-url="/index" authentication-failure-url="/login" /> 
+	 <s:http auto-config="true" use-expressions="true"> 
+	 <s:intercept-url pattern="/vendeur/**" access="hasRole('VENDEUR_ROLE')"/>
+	 <s:intercept-url pattern="/client/**" access="hasRole('CLIENT_ROLE')"/> 
+	 <s:form-login login-page="/login" default-target-url="/home" authentication-failure-url="/login" /> 
 	 <s:logout logout-success-url="/logout" /> 
 	 </s:http> 
 	 <s:authentication-manager> 
 	 <s:authentication-provider> 
 	 <s:password-encoder hash="md5"></s:password-encoder> 
-	 <s:jdbc-user-service data-source-ref="datasource" users-by-username-query="select username,password, actived from user where username=?" authorities-by-username-query="select u.username, r.nomRole from user u, role r where u.idUser = r.idUser and u.username =? " /> 
+	 <s:jdbc-user-service data-source-ref="datasource" users-by-username-query="select username,password, actived from user where username=?" 
+	 authorities-by-username-query="select u.username, r.nomRole from user u, role r where u.idUser = r.idUser and u.username =? " /> 
 	 </s:authentication-provider> 
-	  </s:authentication-manager> -->
+	  </s:authentication-manager>
 	
 
 
