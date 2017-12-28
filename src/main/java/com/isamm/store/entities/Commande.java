@@ -25,15 +25,15 @@ public class Commande implements Serializable {
 	private Collection<LigneCommande> lignes;
 
 	@ManyToOne
-	@JoinColumn(name = "idClient")
-	private Client client;
+	@JoinColumn(name = "idUser")
+	private User user;
 
-	public Client getClient() {
-		return client;
+	public User getUser() {
+		return user;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Collection<LigneCommande> getLignes() {

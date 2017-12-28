@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.isamm.store.entities.Categorie;
-import com.isamm.store.metier.VendeurBoutiqueMetier;
+import com.isamm.store.metier.UserBoutiqueMetier;
 
 public class TestJPA {
 
@@ -17,7 +17,7 @@ public class TestJPA {
 		try {
 			ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 					new String[] { "ApplicationContext.xml" });
-			VendeurBoutiqueMetier metier = (VendeurBoutiqueMetier) context.getBean("metier");
+			UserBoutiqueMetier metier = (UserBoutiqueMetier) context.getBean("metier");
 			List<Categorie> cats1 = metier.listCategories();
 			metier.ajouterCategorie(new Categorie("Ordinateur", "Ordinateurs", null, ""));
 			metier.ajouterCategorie(new Categorie("Imprimantes", "Imprimantes", null, ""));

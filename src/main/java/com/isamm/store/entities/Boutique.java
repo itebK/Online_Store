@@ -21,27 +21,19 @@ public class Boutique implements Serializable {
 	@OneToMany(mappedBy = "boutique")
 	private Collection<Article> articles;
 	@OneToOne
-	@JoinColumn(name = "idVendeur")
-	private Vendeur vendeur;
-
-	public Boutique(Long idBoutique, String nomBoutique, Collection<Article> articles) {
-		super();
-		this.idBoutique = idBoutique;
-		this.nomBoutique = nomBoutique;
-		this.articles = articles;
-	}
-
-	public Vendeur getVendeur() {
-		return vendeur;
-	}
-
-	public void setVendeur(Vendeur vendeur) {
-		this.vendeur = vendeur;
-	}
+	@JoinColumn(name = "idUser")
+	private User user;
 
 	public Boutique() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	public Boutique(String nomBoutique, Collection<Article> articles, User user) {
+		super();
+		this.nomBoutique = nomBoutique;
+		this.articles = articles;
+		this.user = user;
 	}
 
 	public Long getIdBoutique() {
@@ -66,6 +58,14 @@ public class Boutique implements Serializable {
 
 	public void setArticles(Collection<Article> articles) {
 		this.articles = articles;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

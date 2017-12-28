@@ -5,10 +5,9 @@ import java.util.List;
 import com.isamm.store.entities.Article;
 import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
-import com.isamm.store.entities.Client;
 import com.isamm.store.entities.Commande;
 import com.isamm.store.entities.Panier;
-import com.isamm.store.entities.Vendeur;
+import com.isamm.store.entities.User;
 
 public interface IBoutiqueDao {
 	/* CATEGORIE */
@@ -53,25 +52,15 @@ public interface IBoutiqueDao {
 	public List<Boutique> listBoutiques();
 
 	/* COMMANDE */
-	public Commande enregistrerCommande(Panier p, Client c);
+	public Commande enregistrerCommande(Panier p, User u);
 
-	/* CLIENT */
-	public Long ajouterClient(Client c);
+	/* USER */
+	public Long ajouterUser(User u);
 
-	public void supprimerClient(Long idClient);
+	public void supprimerUser(Long idUser);
 
-	public void modifierClient(Client c);
+	public void modifierUser(User u);
 
-	public Client getClient(Long idClient);
-
-	/* VENDEUR */
-
-	public Long ajouterVendeur(Vendeur v);
-
-	public void supprimerVendeur(Long idVendeur);
-
-	public void modifierVendeur(Vendeur v);
-
-	public Vendeur getVendeur(Long idVendeur);
+	public User getUser(Long idUser);
 
 }

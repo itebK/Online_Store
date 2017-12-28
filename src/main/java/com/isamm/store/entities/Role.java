@@ -1,22 +1,19 @@
 package com.isamm.store.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
-@javax.persistence.Entity
+@Entity
 public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idRole;
 	private String nomRole;
-	@OneToMany(mappedBy = "roles")
-	private Collection<Vendeur> vendeurs;
 
 	public Role(String nomRole) {
 		super();

@@ -7,48 +7,77 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-public class Client implements Serializable {
+public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idClient;
+	private Long idUser;
 	@Size(min = 5, max = 20)
-	private String nomClient;
+	private String username;
 	private String adresse;
 	@Email
 	private String email;
+	private String password;
 	private String tel;
-	@OneToMany(mappedBy = "client")
+	private boolean actived;
+	@OneToMany(mappedBy = "user")
 	private Collection<Commande> commandes;
+	@OneToMany
+	@JoinColumn(name = "idUser")
+	private Collection<Role> roles;
 
-	public Client(String nomClient, String adresse, String email, String tel) {
+	public User() {
 		super();
-		this.nomClient = nomClient;
+		// TODO Auto-generated constructor stub
+	}
+
+	public User(String username, String adresse, String email, String password, String tel, boolean actived) {
+		super();
+		this.username = username;
 		this.adresse = adresse;
 		this.email = email;
+		this.password = password;
 		this.tel = tel;
+		this.actived = actived;
 	}
 
-	public Long getIdClient() {
-		return idClient;
+	public boolean isActived() {
+		return actived;
 	}
 
-	public void setIdClient(Long idClient) {
-		this.idClient = idClient;
+	public void setActived(boolean actived) {
+		this.actived = actived;
 	}
 
-	public String getNomClient() {
-		return nomClient;
+	public Collection<Role> getRoles() {
+		return roles;
 	}
 
-	public void setNomClient(String nomClient) {
-		this.nomClient = nomClient;
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Long getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Long idUser) {
+		this.idUser = idUser;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getAdresse() {
@@ -67,6 +96,14 @@ public class Client implements Serializable {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getTel() {
 		return tel;
 	}
@@ -81,21 +118,6 @@ public class Client implements Serializable {
 
 	public void setCommandes(Collection<Commande> commandes) {
 		this.commandes = commandes;
-	}
-
-	public Client(Long idClient, String nomClient, String adresse, String email, String tel,
-			Collection<Commande> commandes) {
-		super();
-		this.idClient = idClient;
-		this.nomClient = nomClient;
-		this.adresse = adresse;
-		this.email = email;
-		this.tel = tel;
-		this.commandes = commandes;
-	}
-
-	public Client() {
-		super();
 	}
 
 }

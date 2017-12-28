@@ -10,11 +10,10 @@ import javax.persistence.Query;
 import com.isamm.store.entities.Article;
 import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
-import com.isamm.store.entities.Client;
 import com.isamm.store.entities.Commande;
 import com.isamm.store.entities.LigneCommande;
 import com.isamm.store.entities.Panier;
-import com.isamm.store.entities.Vendeur;
+import com.isamm.store.entities.User;
 
 public class BoutiqueDAOImpl implements IBoutiqueDao {
 	@PersistenceContext
@@ -105,8 +104,8 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	/* BOUTIQUE */
 
 	@Override
-	public Long ajouterBoutique(Boutique b, Long IdVend) {
-		b.setVendeur(getVendeur(IdVend));
+	public Long ajouterBoutique(Boutique b, Long IdUser) {
+		b.setUser(getUser(IdUser));
 		em.persist(b);
 		return b.getIdBoutique();
 	}
@@ -140,65 +139,42 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 
 	/* COMMANDE */
 	@Override
-	public Commande enregistrerCommande(Panier p, Client c) {
+	public Commande enregistrerCommande(Panier p, User u) {
 
-		em.persist(c);
+		em.persist(u);
 		Commande cmd = new Commande();
-		cmd.setClient(c);
+		cmd.setUser(u);
 		cmd.setLignes(p.getCommandes());
 		cmd.setDateCommande(new Date());
 		for (LigneCommande lc : p.getCommandes())
 			em.persist(lc);
-		em.persist(c);
+		em.persist(u);
 		return cmd;
 	}
 
-	/* CLIENT */
+	/* USER */
 
 	@Override
-	public Long ajouterClient(Client c) {
-		em.persist(c);
-		return c.getIdClient();
+	public Long ajouterUser(User u) {
+		em.persist(u);
+		return u.getIdUser();
 	}
 
 	@Override
-	public void supprimerClient(Long idClient) {
-		em.remove(getClient(idClient));
-
-	}
-
-	@Override
-	public void modifierClient(Client c) {
-		em.merge(c);
-	}
-
-	@Override
-	public Client getClient(Long idClient) {
-		return em.find(Client.class, idClient);
-	}
-
-	/* VENDEUR */
-	@Override
-	public Long ajouterVendeur(Vendeur v) {
-		em.persist(v);
-		return v.getIdVendeur();
-	}
-
-	@Override
-	public void supprimerVendeur(Long idVendeur) {
-		em.remove(getVendeur(idVendeur));
+	public void supprimerUser(Long idUser) {
+		em.remove(getUser(idUser));
 
 	}
 
 	@Override
-	public void modifierVendeur(Vendeur v) {
-		em.merge(v);
+	public void modifierUser(User u) {
+		em.merge(u);
 
 	}
 
 	@Override
-	public Vendeur getVendeur(Long idVendeur) {
-		return em.find(Vendeur.class, idVendeur);
+	public User getUser(Long idUser) {
+		return em.find(User.class, idUser);
 	}
 
 }
