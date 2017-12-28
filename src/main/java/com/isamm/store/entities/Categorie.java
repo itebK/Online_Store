@@ -11,15 +11,13 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
 public class Categorie implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCategorie;
-	@NotEmpty
+	// @NotEmpty
 	@Size(min = 4, max = 20)
 	private String nomCategorie;
 	@Size(min = 5, max = 500)
@@ -32,17 +30,6 @@ public class Categorie implements Serializable {
 
 	public Categorie() {
 		super();
-	}
-
-	public Categorie(Long idCategorie, String nomCategorie, String description, byte[] photo, String nomPhoto,
-			Collection<Article> articles) {
-		super();
-		this.idCategorie = idCategorie;
-		this.nomCategorie = nomCategorie;
-		this.description = description;
-		this.photo = photo;
-		this.nomPhoto = nomPhoto;
-		this.articles = articles;
 	}
 
 	public Categorie(String nomCategorie, String description, byte[] photo, String nomPhoto) {

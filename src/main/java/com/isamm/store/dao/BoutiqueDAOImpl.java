@@ -129,6 +129,11 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	}
 
 	@Override
+	public Boutique getBoutiqueParNom(String nomBoutique) {
+		return em.find(Boutique.class, nomBoutique);
+	}
+
+	@Override
 	public List<Boutique> listBoutiques() {
 		return em.createQuery("from Boutique").getResultList();
 	}

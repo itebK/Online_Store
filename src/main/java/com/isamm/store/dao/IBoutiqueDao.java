@@ -48,6 +48,8 @@ public interface IBoutiqueDao {
 
 	public Boutique getBoutiqueParId(Long idBoutique);
 
+	public Boutique getBoutiqueParNom(String nomBoutique);
+
 	public List<Boutique> listBoutiques();
 
 	/* COMMANDE */
