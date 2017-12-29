@@ -1,3 +1,6 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +46,19 @@
 </head>
 <!-- Body-->
 <body>
+
+<!-- ${name}
+	 <c:choose>
+            <c:when test="${name !='anonymousUser'}">
+                <p> not empty </p>
+            </c:when>
+            <c:otherwise>
+                <p>empty</p>
+            </c:otherwise>
+        </c:choose> -->
+        
+        
+
 
 	<!-- Off-Canvas Category Menu-->
 	<div class="offcanvas-container" id="shop-categories">
@@ -148,8 +164,12 @@
 						<i class="icon-search"></i>
 					</div>
 					<div class="account">
+					
+
+
 						<a href="profile"></a><i class="icon-head"></i>
 						<ul class="toolbar-dropdown">
+						<sec:authorize access="hasRole('CLIENT_ROLE')">
 							<li class="sub-menu-user">
 								<div class="user-ava">
 									<img
@@ -157,17 +177,24 @@
 										alt="">
 								</div>
 								<div class="user-info">
-									<h6 class="user-name">Connected user</h6>
-									<span class="text-xs text-muted">Role</span>
+									<h6 class="user-name"><sec:authentication property="principal.username" /></h6>
+									<span class="text-xs text-muted"><sec:authentication property="principal.authorities" /></span>
 								</div>
 							</li>
 							<li><a href="profile">My Profile</a></li>
 							<li><a href="profile-orders">Orders List</a></li>
 							<li><a href="profile-wishlist">Wishlist</a></li>
 							<li class="sub-menu-separator"></li>
-							<li><a href="#"> <i class="icon-unlock"></i>Logout
+							<li><a href="<c:url value='/j_spring_security_logout'/>"> <i class="icon-unlock"></i>Logout
 							</a></li>
+							</sec:authorize>
+							<sec:authorize access="isAnonymous()">
+							<li><a href="<c:url value='/login'/>"> <i class="icon-lock"></i>Login/Inscription
+							
+							</a></li>
+							</sec:authorize>
 						</ul>
+						
 					</div>
 					<div class="cart">
 						<a href="profile-cart"></a><i class="icon-bag"></i><span

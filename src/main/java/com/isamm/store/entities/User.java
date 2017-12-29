@@ -3,6 +3,8 @@ package com.isamm.store.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,16 +22,17 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUser;
 	@Size(min = 5, max = 20)
+	@Column(unique = true)
 	private String username;
 	private String adresse;
 	@Email
 	private String email;
 	private String password;
 	private String tel;
-	private boolean actived;
+	private boolean actived = true;
 	@OneToMany(mappedBy = "user")
 	private Collection<Commande> commandes;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idUser")
 	private Collection<Role> roles;
 

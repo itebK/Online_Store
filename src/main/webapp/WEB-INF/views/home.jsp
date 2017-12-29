@@ -144,7 +144,7 @@
 					<div class="card-body text-center">
 						<h4 class="card-title">Shoes</h4>
 						<p class="text-muted">Starting from $56.00</p>
-						<a class="btn btn-outline-primary btn-sm" href="product-by-category">View
+						<a class="btn btn-outline-primary btn-sm" href="client/product-by-category">View
 							Products</a>
 					</div>
 				</div>
@@ -409,6 +409,7 @@
 		</div>
 	</section>
 
+</div>
 
 
 

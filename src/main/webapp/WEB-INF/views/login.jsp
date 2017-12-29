@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
 <jsp:include page="header.jsp" />
 
@@ -58,49 +59,61 @@
             <div class="padding-top-3x hidden-md-up"></div>
             <h3 class="margin-bottom-1x">No Account? Register</h3>
             <p>Registration takes less than a minute but gives you full control over your orders.</p>
-            <form class="row" method="post">
+            <f:form modelAttribute="user" class="row" method="post" action="saveUser">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-fn">First Name</label>
-                  <input class="form-control" type="text" id="reg-fn" required>
+                  <label for="reg-fn">Username</label>
+                  <f:input class="form-control" type="text" id="reg-fn" path="username" required="required"/>
+                  <f:errors path="username"></f:errors>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="reg-ln">Last Name</label>
-                  <input class="form-control" type="text" id="reg-ln" required>
+                  <label for="reg-ln">User Type</label>
+                 
+                  <f:select path="roles" class="form-control">
+				  	<f:option value="VENDEUR_ROLE" label="VENDEUR" />
+				  	<f:option value="CLIENT_ROLE" label="CLIENT" />
+			    	</f:select>
+			    	<f:errors path="roles"></f:errors>
+                 
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-email">E-mail Address</label>
-                  <input class="form-control" type="email" id="reg-email" required>
+                  <f:input class="form-control" type="email" id="reg-email" path="email" required="required"/>
+                  <f:errors path="email"></f:errors>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-phone">Phone Number</label>
-                  <input class="form-control" type="text" id="reg-phone" required>
+                  <f:input class="form-control" type="text" id="reg-phone" path="tel" required="required"/>
+                  <f:errors path="tel"></f:errors>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-pass">Password</label>
-                  <input class="form-control" type="password" id="reg-pass" required>
+                  <f:input class="form-control" type="password" id="reg-pass" path="password" required="required"/>
+                  <f:errors path="password"></f:errors>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-pass-confirm">Confirm Password</label>
-                  <input class="form-control" type="password" id="reg-pass-confirm" required>
+                  <input class="form-control" type="password" id="reg-pass-confirm" required="required">
+                  
                 </div>
               </div>
               <div class="col-12 text-center text-sm-right">
                 <button class="btn btn-primary margin-bottom-none" type="submit">Register</button>
               </div>
-            </form>
+            </f:form>
           </div>
         </div>
+      </div>
       </div>
 
 

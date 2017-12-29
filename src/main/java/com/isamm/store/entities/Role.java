@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Role implements Serializable {
@@ -14,6 +16,9 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idRole;
 	private String nomRole;
+	@ManyToOne
+	@JoinColumn(name = "idUser")
+	private User user;
 
 	public Role(String nomRole) {
 		super();
@@ -24,6 +29,14 @@ public class Role implements Serializable {
 		super();
 		this.idRole = idRole;
 		this.nomRole = nomRole;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Role() {
