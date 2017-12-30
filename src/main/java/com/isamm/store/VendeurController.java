@@ -70,7 +70,7 @@ public class VendeurController {
 			b = userMetier.getBoutiqueParUser(userMetier.getUserParNom(nameVendeur).getIdUser());
 			model.addAttribute("boutiques", b);
 			model.addAttribute("articleParBoutique", userMetier.getArticleParIdBoutique(b.getIdBoutique()));
-			System.out.println(userMetier.getArticleParIdBoutique(b.getIdBoutique()));
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,7 +131,15 @@ public class VendeurController {
 
 		} else
 
+		{
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String nameVendeur = auth.getName();
+			Boutique b = new Boutique();
+			b = userMetier.getBoutiqueParUser(userMetier.getUserParNom(nameVendeur).getIdUser());
+			a.setBoutique(b);
+
 			userMetier.ajouterArticle(a, a.getCategorie().getIdCategorie());
+		}
 		model.addAttribute("article", new Article());
 		model.addAttribute("articles", userMetier.listArticles());
 		model.addAttribute("message", "Article is saved");
