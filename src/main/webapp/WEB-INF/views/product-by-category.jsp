@@ -32,22 +32,27 @@
               <div class="grid-sizer"></div>
 
 
-
+		<c:forEach items="${articles}" var="a">
               <!-- Product-->
               <div class="grid-item">
                 <div class="product-card">
                     <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
-                    </div><a class="product-thumb" href="single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/products/03.jpg" alt="Product"></a>
-                  <h3 class="product-title"><a href="single-product">Oakley Kickback</a></h3>
-                  <h4 class="product-price">$155.00</h4>
+                    </div><a class="product-thumb" href="single-product">
+                     <c:if test="${a.idArticle!=null}">
+             				<img src="photoArt?idArt=${a.idArticle }" alt="Product"/>
+           			</c:if></a>
+                  <h3 class="product-title"><a href="single-product">${a.designation }</a></h3>
+                  <h4 class="product-price">${a.prix }TND</h4>
                   <div class="product-buttons">
                     <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                    <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+                    <a class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</a>
                   </div>
                 </div>
               </div>
               <!-- Product-->
-      
+              
+        </c:forEach>        
+               
              
             </div>
           </div>
@@ -59,66 +64,10 @@
               <section class="widget widget-categories">
                 <h3 class="widget-title">Shop Categories</h3>
                 <ul>
-                  <li class="has-children expanded"><a href="#">Shoes</a><span>(1138)</span>
-                    <ul>
-                      <li><a href="#">Women's</a><span>(508)</span>
-                        <ul>
-                          <li><a href="#">Sneakers</a></li>
-                          <li><a href="#">Heels</a></li>
-                          <li><a href="#">Loafers</a></li>
-                          <li><a href="#">Sandals</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Men's</a><span>(423)</span>
-                        <ul>
-                          <li><a href="#">Boots</a></li>
-                          <li><a href="#">Oxfords</a></li>
-                          <li><a href="#">Loafers</a></li>
-                          <li><a href="#">Sandals</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Boy's Shoes</a><span>(97)</span></li>
-                      <li><a href="#">Girl's Shoes</a><span>(110)</span></li>
-                    </ul>
+                <c:forEach items="${categories}" var="cat">
+                  <li class="has-children expanded"><a href="#">${cat.nomCategorie}</a><span>(1138)</span>
                   </li>
-                  <li class="has-children"><a href="#">Clothing</a><span>(2356)</span>
-                    <ul>
-                      <li><a href="#">Women's</a><span>(1032)</span>
-                        <ul>
-                          <li><a href="#">Dresses</a></li>
-                          <li><a href="#">Shirts &amp; Tops</a></li>
-                          <li><a href="#">Swimwear</a></li>
-                          <li><a href="#">Shorts</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Men's</a><span>(937)</span>
-                        <ul>
-                          <li><a href="#">Shirts &amp; Tops</a></li>
-                          <li><a href="#">Shorts</a></li>
-                          <li><a href="#">Swimwear</a></li>
-                          <li><a href="#">Pants</a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Kid's Clothing</a><span>(386)</span></li>
-                    </ul>
-                  </li>
-                  <li class="has-children"><a href="#">Bags</a><span>(420)</span>
-                    <ul>
-                      <li><a href="#">Handbags</a><span>(180)</span></li>
-                      <li><a href="#">Backpacks</a><span>(132)</span></li>
-                      <li><a href="#">Wallets &amp; Accessories</a><span>(47)</span></li>
-                      <li><a href="#">Luggage</a><span>(61)</span></li>
-                    </ul>
-                  </li>
-                  <li class="has-children"><a href="#">Accessories</a><span>(874)</span>
-                    <ul>
-                      <li><a href="#">Sunglasses</a><span>(211)</span></li>
-                      <li><a href="#">Hats</a><span>(195)</span></li>
-                      <li><a href="#">Watches</a><span>(159)</span></li>
-                      <li><a href="#">Jewelry</a><span>(203)</span></li>
-                      <li><a href="#">Belts</a><span>(106)</span></li>
-                    </ul>
-                  </li>
+         		</c:forEach>        
                 </ul>
               </section>
               <!-- Widget Price Range-->
