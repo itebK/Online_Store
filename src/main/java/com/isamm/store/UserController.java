@@ -93,8 +93,6 @@ public class UserController {
 		model.addAttribute("user", user);
 		model.addAttribute("title", "Login");
 
-		model.addAttribute("message", "Welcome " + user.getUsername() + " to your profile");
-
 		logger.info("afficher page login");
 
 		return "login";
@@ -120,6 +118,8 @@ public class UserController {
 		model.addAttribute("user", u);
 		model.addAttribute("title", "Profile");
 		logger.info("afficher profile de l'utilisateur connecter");
+
+		model.addAttribute("message", "Welcome " + u.getUsername() + " to your profile");
 
 		return "profile";
 	}
