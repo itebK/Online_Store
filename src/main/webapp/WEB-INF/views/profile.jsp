@@ -37,8 +37,11 @@
 					</div>
 					<div class="user-info">
                 <div class="user-avatar">
-                <input type="file" class="edit-avatar"/>
-                <img src="${pageContext.request.contextPath}/resources/img/account/user-ava.jpg" alt="User"></div>
+               <f:form modelAttribute="user" method="post" id="form_file" enctype="multipart/form-data" action="saveImgProfile">
+                <input  onchange="document.getElementById('form_file').submit()" type="file" class="edit-avatar" name="file"/>
+                
+                </f:form>
+                <img src="photoProfile?idUser=${user.idUser}" width="auto" alt="User"></div>
                 <div class="user-data">
                   <h4>${user.getUsername() }</h4>
                   <span>
