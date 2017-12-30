@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.isamm.store.entities.Article;
+import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
 import com.isamm.store.metier.UserBoutiqueMetier;
 
@@ -32,7 +33,13 @@ public class HomeController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
 		model.addAttribute("name", name);
-		System.out.println(name);
+		model.addAttribute("boutique", new Boutique());
+
+		try {
+			model.addAttribute("boutiques", userMetier.getBoutiqueParUser(userMetier.getUserParNom(name).getIdUser()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return "home";
 	}
