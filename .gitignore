@@ -1,4 +1,5 @@
 /target/
+*/ApplicationContext.xml
 *.class
 *.settings
 *.project
