@@ -16,10 +16,10 @@
           </div>
           <div class="column">
             <ul class="breadcrumbs">
-              <li><a href="home">Home</a>
+              <li><a href="/store/home">Home</a>
               </li>
               <li class="separator">&nbsp;</li>
-              <li><a href="profile">Account</a>
+              <li><a href="/store/profile">Account</a>
               </li>
               <li class="separator">&nbsp;</li>
               <li>Login / Register</li>
@@ -48,7 +48,7 @@
               <div class="d-flex flex-wrap justify-content-between padding-bottom-1x">
                 <label class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" checked><span class="custom-control-indicator"></span><span class="custom-control-description">Remember me</span>
-                </label><a class="navi-link" href="recovery-password">Forgot password?</a>
+                </label><a class="navi-link" href="/store/recovery-password">Forgot password?</a>
               </div>
               <div class="text-center text-sm-right">
                 <button class="btn btn-primary margin-bottom-none" type="submit" value="Login">Login</button>

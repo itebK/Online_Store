@@ -11,7 +11,7 @@
 			</div>
 			<div class="column">
 				<ul class="breadcrumbs">
-					<li><a href="home">Home</a></li>
+					<li><a href="/store/home">Home</a></li>
 					<li class="separator">&nbsp;</li>
 					<li>Shop Categories</li>
 				</ul>
@@ -41,7 +41,7 @@
 					<c:forEach items="${categories}" var="cat">
 					<div class="col-sm-6">
 						<div class="card mb-30">
-							<a class="card-img-tiles" href="product-by-category">
+							<a class="card-img-tiles" href="/store/client/product-by-category">
 								<div class="inner">
 							<div class="main-img">
 							
@@ -57,7 +57,7 @@
 								<h4 class="card-title">${cat.nomCategorie}</h4>
 								<p class="text-muted">Starting from $79.99</p>
 								<a class="btn btn-outline-primary btn-sm"
-									href="product-by-category">View Products</a>
+									href="/store/client/product-by-category">View Products</a>
 							</div>
 						</div>
 					</div>

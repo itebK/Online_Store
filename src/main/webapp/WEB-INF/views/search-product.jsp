@@ -24,9 +24,9 @@
             <div class="card mb-4">
               <div class="card-header"><span class="badge badge-pill badge-primary">Product</span></div>
               <div class="card-body">
-                <div class="d-flex"><a class="pr-4 hidden-xs-down" href="shop-single.html" style="max-width: 225px;"><img src="${pageContext.request.contextPath}/resources/img/shop/products/01.jpg" alt="Product"></a>
+                <div class="d-flex"><a class="pr-4 hidden-xs-down" href="/store/client/single-product" style="max-width: 225px;"><img src="${pageContext.request.contextPath}/resources/img/shop/products/01.jpg" alt="Product"></a>
                   <div>
-                    <h5><a class="navi-link" href="single-product">Unionbay Park </a></h5>
+                    <h5><a class="navi-link" href="/store/client/single-product">Unionbay Park </a></h5>
                     <h6>
                       <del class="text-muted">$99.99</del> $49.99
                     </h6>
@@ -40,9 +40,9 @@
             <div class="card mb-4">
               <div class="card-header"><span class="badge badge-pill badge-primary">Product</span></div>
               <div class="card-body">
-                <div class="d-flex"><a class="pr-4 hidden-xs-down" href="single-product" style="max-width: 225px;"><img src="${pageContext.request.contextPath}/resources/img/shop/products/03.jpg" alt="Product"></a>
+                <div class="d-flex"><a class="pr-4 hidden-xs-down" href="/store/client/single-product" style="max-width: 225px;"><img src="${pageContext.request.contextPath}/resources/img/shop/products/03.jpg" alt="Product"></a>
                   <div>
-                    <h5><a class="navi-link" href="shop-single.html">Oakley Kickback</a></h5>
+                    <h5><a class="navi-link" href="/store/client/single-product">Oakley Kickback</a></h5>
                     <h6>$155.00</h6>
                     <p>Ut enim ad minim veniam, <span class='text-highlighted'>lorem ipsum</span> reprehenderit suscipit voluptatem blanditiis aliquid rerum animi aliquam, dicta quas nesciunt commodi sequi minima totam architecto.</p>
                   </div>

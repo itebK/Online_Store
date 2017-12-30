@@ -13,10 +13,10 @@
           </div>
           <div class="column">
             <ul class="breadcrumbs">
-              <li><a href="home">Home</a>
+              <li><a href="/store/home">Home</a>
               </li>
               <li class="separator">&nbsp;</li>
-              <li><a href="profile">Account</a>
+              <li><a href="/store/profile">Account</a>
               </li>
               <li class="separator">&nbsp;</li>
               <li>My Wishlist</li>
@@ -40,11 +40,11 @@
               </div>
             </aside>
                       <nav class="list-group">
-            <a class="list-group-item with-badge" href="profile-orders"><i class="icon-bag"></i>
+            <a class="list-group-item with-badge" href="/store/profile-orders"><i class="icon-bag"></i>
             Orders<span class="badge badge-primary badge-pill">6</span></a>
-            <a class="list-group-item" href="profile"><i class="icon-head"></i>
-            Profile</a><a class="list-group-item" href="profile-address"><i class="icon-map"></i>
-            Addresses</a><a class="list-group-item with-badge active" href="profile-wishlist"><i class="icon-heart"></i>
+            <a class="list-group-item" href="/store/profile"><i class="icon-head"></i>
+            Profile</a><a class="list-group-item" href="/store/profile-address"><i class="icon-map"></i>
+            Addresses</a><a class="list-group-item with-badge active" href="/store/profile-wishlist"><i class="icon-heart"></i>
             Wishlist<span class="badge badge-primary badge-pill">3</span></a>
    			</nav>
           </div>
@@ -62,9 +62,9 @@
                 <tbody>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/01.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="single-product">Unionbay Park</a></h4>
+                          <h4 class="product-title"><a href="/store/client/single-product">Unionbay Park</a></h4>
                           <div class="text-lg text-medium text-muted">$43.90</div>
                           <div>Availability:
                             <div class="d-inline text-success">In Stock</div>
@@ -76,9 +76,9 @@
                   </tr>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/02.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/02.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="single-product">Daily Fabric Cap</a></h4>
+                          <h4 class="product-title"><a href="/store/client/single-product">Daily Fabric Cap</a></h4>
                           <div class="text-lg text-medium text-muted">$24.70</div>
                           <div>Availability:
                             <div class="d-inline text-warning">2 - 3 Weeks</div>
@@ -90,9 +90,9 @@
                   </tr>
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/03.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/03.jpg" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="single-product">Cole Haan Crossbody</a></h4>
+                          <h4 class="product-title"><a href="/store/client/single-product">Cole Haan Crossbody</a></h4>
                           <div class="text-lg text-medium text-muted">$200.00</div>
                           <div>Availability:
                             <div class="d-inline text-success">In Stock</div>

@@ -12,7 +12,7 @@
 			</div>
 			<div class="column">
 				<ul class="breadcrumbs">
-					<li><a href="home">Home</a></li>
+					<li><a href="/store/home">Home</a></li>
 					<li class="separator">&nbsp;</li>
 					<li>Cart</li>
 				</ul>
@@ -46,12 +46,12 @@
 					<tr>
 						<td>
 							<div class="product-item">
-								<a class="product-thumb" href="single-product"><img
+								<a class="product-thumb" href="/store/client/single-product"><img
 									src="${pageContext.request.contextPath}/resources/img/shop/cart/01.jpg"
 									alt="Product"></a>
 								<div class="product-info">
 									<h4 class="product-title">
-										<a href="single-product">Unionbay Park</a>
+										<a href="/store/client/single-product">Unionbay Park</a>
 									</h4>
 									<span><em>Size:</em> 10.5</span><span><em>Color:</em>
 										Dark Blue</span>
@@ -78,12 +78,12 @@
 					<tr>
 						<td>
 							<div class="product-item">
-								<a class="product-thumb" href="single-product"><img
+								<a class="product-thumb" href="/store/client/single-product"><img
 									src="${pageContext.request.contextPath}/resources/img/shop/cart/02.jpg"
 									alt="Product"></a>
 								<div class="product-info">
 									<h4 class="product-title">
-										<a href="single-product">Daily Fabric Cap</a>
+										<a href="/store/client/single-product">Daily Fabric Cap</a>
 									</h4>
 									<span><em>Size:</em> XL</span><span><em>Color:</em>
 										Black</span>
@@ -110,12 +110,12 @@
 					<tr>
 						<td>
 							<div class="product-item">
-								<a class="product-thumb" href="single-product"><img
+								<a class="product-thumb" href="/store/client/single-product"><img
 									src="${pageContext.request.contextPath}/resources/img/shop/cart/03.jpg"
 									alt="Product"></a>
 								<div class="product-info">
 									<h4 class="product-title">
-										<a href="single-product">Cole Haan Crossbody</a>
+										<a href="/store/client/single-product">Cole Haan Crossbody</a>
 									</h4>
 									<span><em>Size:</em> -</span><span><em>Color:</em>
 										Turquoise</span>
@@ -150,7 +150,7 @@
 		</div>
 		<div class="shopping-cart-footer">
 			<div class="column">
-				<a class="btn btn-outline-secondary" href="category-product"><i
+				<a class="btn btn-outline-secondary" href="/store/client/category-product"><i
 					class="icon-arrow-left"></i>&nbsp;Back to Shopping</a>
 			</div>
 			<div class="column">

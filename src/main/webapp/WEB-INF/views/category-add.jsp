@@ -31,9 +31,9 @@
                 </div>
               </div>
               <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="reg-phone">Picture</label>
-                  <input class="form-control" type="file" name="file"/>
+              <label for="reg-phone">Picture</label>
+                <div class="custom-file">
+                  <input class="custom-file-input" type="file" name="file"/><span class="custom-file-control"></span>
                 </div>
               </div>
               <div class="col-12 text-center text-sm-right">

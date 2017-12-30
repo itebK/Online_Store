@@ -14,7 +14,7 @@
           </div>
           <div class="column">
             <ul class="breadcrumbs">
-              <li><a href="home">Home</a>
+              <li><a href="/store/home">Home</a>
               </li>
               <li class="separator">&nbsp;</li>
               <li>My Profile</li>
@@ -43,11 +43,11 @@
             </aside>
             
             <nav class="list-group">
-            <a class="list-group-item with-badge" href="profile-orders"><i class="icon-bag"></i>
+            <a class="list-group-item with-badge" href="/store/profile-orders"><i class="icon-bag"></i>
             Orders<span class="badge badge-primary badge-pill">6</span></a>
-            <a class="list-group-item active" href="profile"><i class="icon-head"></i>
-            Profile</a><a class="list-group-item" href="profile-address"><i class="icon-map"></i>
-            Addresses</a><a class="list-group-item with-badge" href="profile-wishlist"><i class="icon-heart"></i>
+            <a class="list-group-item active" href="/store/profile"><i class="icon-head"></i>
+            Profile</a><a class="list-group-item" href="/store/profile-address"><i class="icon-map"></i>
+            Addresses</a><a class="list-group-item with-badge" href="/store/profile-wishlist"><i class="icon-heart"></i>
             Wishlist<span class="badge badge-primary badge-pill">3</span></a>
    			</nav>
    			

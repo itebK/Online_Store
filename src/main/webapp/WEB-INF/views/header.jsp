@@ -83,7 +83,7 @@
 	</div>
 	<!-- Off-Canvas Mobile Menu-->
 	<div class="offcanvas-container" id="mobile-menu">
-		<a class="account-link" href="profile">
+		<a class="account-link" href="/store/profile">
 			<div class="user-ava">
 				<img
 					src="${pageContext.request.contextPath}/resources/img/account/user-ava-md.jpg"
@@ -96,7 +96,7 @@
 		</a>
 		<nav class="offcanvas-menu">
 			<ul class="menu">
-				<li class="has-children active"><span> <a href="home">
+				<li class="has-children active"><span> <a href="/store/home">
 							<span>Home</span>
 					</a>
 				</span></li>
@@ -109,7 +109,7 @@
 	<!-- Topbar-->
 	<div class="topbar">
 		<div class="topbar-column">
-			<a class="hidden-md-down" href="mailto:support@unishop.com"><i
+			<a class="hidden-md-down" href="mailto:contact@isamm.com"><i
 				class="icon-mail"> </i>&nbsp; contact@isamm.com</a> <a
 				class="hidden-md-down" href="tel:0021626018141"> <i
 				class="icon-bell"></i>&nbsp; 00 216 26 01 81 41
@@ -149,19 +149,21 @@
 				<a class="offcanvas-toggle menu-toggle" href="#mobile-menu"
 					data-toggle="offcanvas"></a>
 				<!-- Site Logo-->
-				<a class="site-logo" href="home"><img
+				<a class="site-logo" href="/store/home"><img
 					src="${pageContext.request.contextPath}/resources/img/logo/logo.png"
 					alt="Unishop"></a>
 			</div>
 		</div>
 		<!-- Main Navigation-->
-
+<sec:authorize access="hasRole('VENDEUR_ROLE')">
 		<nav class="site-menu">
 			<ul>
-				<li><a href="home"><span>Home</span></a></li>
+				<li><a href="/store/vendeur/add-boutique"><span>Add Boutique</span></a></li>
+				<li><a href="/store/vendeur/add-category"><span>Add Category</span></a></li>
+				<li><a href="/store/vendeur/add-article"><span>Add Article</span></a></li>
 			</ul>
 		</nav>
-
+</sec:authorize>
 		<!-- Toolbar-->
 		<div class="toolbar">
 			<div class="inner">
@@ -172,8 +174,13 @@
 					<div class="account">
 
 
-
-						<a href="profile"></a><i class="icon-head"></i>
+					<sec:authorize access="isAuthenticated()">
+						<a href="/store/profile"></a>
+					</sec:authorize>
+					<sec:authorize access="isAnonymous()">
+					<a href="/store/login"></a>
+					</sec:authorize>
+						<i class="icon-head"></i>
 						<ul class="toolbar-dropdown">
 							<sec:authorize access="hasRole('CLIENT_ROLE')">
 								<li class="sub-menu-user">
@@ -203,7 +210,7 @@
 								</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAnonymous()">
-								<li><a href="<c:url value='/login'/>"> <i
+								<li><a href="<c:url value='/store/login'/>"> <i
 										class="icon-lock"></i>Login/Inscription
 
 								</a></li>
@@ -219,11 +226,11 @@
 							<div class="dropdown-product-item">
 								<span class="dropdown-product-remove"><i
 									class="icon-cross"></i></span><a class="dropdown-product-thumb"
-									href="single-product"><img
+									href="/store/client/single-product"><img
 									src="${pageContext.request.contextPath}/resources/img/cart-dropdown/02.jpg"
 									alt="Product"></a>
 								<div class="dropdown-product-info">
-									<a class="dropdown-product-title" href="single-product">Daily
+									<a class="dropdown-product-title" href="/store/client/single-product">Daily
 										Fabric Cap</a><span class="dropdown-product-details">2 x
 										$24.89</span>
 								</div>
@@ -232,11 +239,11 @@
 							<div class="dropdown-product-item">
 								<span class="dropdown-product-remove"><i
 									class="icon-cross"></i></span><a class="dropdown-product-thumb"
-									href="single-product"><img
+									href="/store/client/single-product"><img
 									src="${pageContext.request.contextPath}/resources/img/cart-dropdown/03.jpg"
 									alt="Product"></a>
 								<div class="dropdown-product-info">
-									<a class="dropdown-product-title" href="single-product">Haan
+									<a class="dropdown-product-title" href="/store/client/single-product">Haan
 										Crossbody</a><span class="dropdown-product-details">1 x
 										$200.00</span>
 								</div>

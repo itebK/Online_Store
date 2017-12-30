@@ -13,10 +13,10 @@
           </div>
           <div class="column">
             <ul class="breadcrumbs">
-              <li><a href="home">Home</a>
+              <li><a href="/store/home">Home</a>
               </li>
               <li class="separator">&nbsp;</li>
-              <li><a href="product-by-category">Shop</a>
+              <li><a href="/store/client/product-by-category">Shop</a>
               </li>
               <li class="separator">&nbsp;</li>
               <li>Single Product</li>

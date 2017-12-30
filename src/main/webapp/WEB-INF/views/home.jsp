@@ -28,7 +28,7 @@
 								</div>
 							</div>
 							<a class="btn btn-primary scale-up delay-1"
-								href="product-by-category">View Offers</a>
+								href="/store/client/product-by-category">View Offers</a>
 						</div>
 						<div class="col-md-6 padding-bottom-2x mb-3">
 							<img class="d-block mx-auto"
@@ -54,7 +54,7 @@
 								</div>
 							</div>
 							<a class="btn btn-primary scale-up delay-1"
-								href="single-product">Shop Now</a>
+								href="/store/client/single-product">Shop Now</a>
 						</div>
 						<div class="col-md-6 padding-bottom-2x mb-3">
 							<img class="d-block mx-auto"
@@ -80,7 +80,7 @@
 								</div>
 							</div>
 							<a class="btn btn-primary scale-up delay-1"
-								href="single-product">Shop Now</a>
+								href="/store/client/single-product">Shop Now</a>
 						</div>
 						<div class="col-md-6 padding-bottom-2x mb-3">
 							<img class="d-block mx-auto"
@@ -100,7 +100,7 @@
 			<div class="col-md-4 col-sm-6">
 			
 				<div class="card mb-30">
-					<a class="card-img-tiles" href="product-by-category">
+					<a class="card-img-tiles" href="/store/client/product-by-category">
 						<div class="inner">
 							<div class="main-img">
 							
@@ -115,7 +115,7 @@
 					<div class="card-body text-center">
 						<h4 class="card-title">${cat.nomCategorie}</h4>
 						<p class="text-muted">Starting from $49.99</p>
-						<a class="btn btn-outline-primary btn-sm" href="client/product-by-category">View
+						<a class="btn btn-outline-primary btn-sm" href="/store/client/product-by-category">View
 							Products</a>
 					</div>
 				</div>
@@ -125,7 +125,7 @@
 		</div>
 		<div class="text-center">
 			<a class="btn btn-outline-secondary margin-top-none"
-				href="category-product">All Categories</a>
+				href="/store/client/category-product">All Categories</a>
 		</div>
 	</section>
 	
@@ -143,7 +143,7 @@
              				<img src="photoArt?idArt=${a.idArticle }" alt="Product"/>
            			</c:if></a>
 					<h3 class="product-title">
-						<a href="single-product">${a.designation }</a>
+						<a href="/store/client/single-product">${a.designation }</a>
 					</h3>
 					<h4 class="product-price">
 						

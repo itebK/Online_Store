@@ -15,10 +15,10 @@
           </div>
           <div class="column">
             <ul class="breadcrumbs">
-              <li><a href="home">Home</a>
+              <li><a href="/store/home">Home</a>
               </li>
               <li class="separator">&nbsp;</li>
-              <li><a href="profile">Account</a>
+              <li><a href="/store/profile">Account</a>
               </li>
               <li class="separator">&nbsp;</li>
               <li>Password Recovery</li>
