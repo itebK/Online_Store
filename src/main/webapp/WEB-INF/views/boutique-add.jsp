@@ -45,12 +45,13 @@
       You don't have articles yet
       </c:when>
 					<c:otherwise>
-					
-					<h3 class="margin-bottom-1x">My Shop Name : ${boutiques.nomBoutique }</h3>
-					
+
+						<h3 class="margin-bottom-1x">My Shop Name :
+							${boutiques.nomBoutique }</h3>
+
 						<div class="container padding-bottom-3x mb-1">
 							<div class="row">
-							
+
 								<!-- Products-->
 								<div class="col-xl-9 col-lg-8 order-lg-2">
 									<!-- Products Grid-->
@@ -78,17 +79,12 @@
 													</h3>
 													<h4 class="product-price">${a.prix }TND</h4>
 													<div class="product-buttons">
-														<button
+														<a href='suppArt?idArt=${a.idArticle}'
 															class="btn btn-outline-secondary btn-sm btn-wishlist"
-															data-toggle="tooltip" title="Remove">
-															<i class="icon-cross"></i>
-														</button>
-														<a class="btn btn-outline-primary btn-sm" data-toast
-															data-toast-type="success" data-toast-position="topRight"
-															data-toast-icon="icon-circle-check"
-															data-toast-title="Product"
-															data-toast-message="successfuly added to cart!">Add
-															to Cart</a>
+															data-toggle="tooltip" title="Remove"> <i
+															class="icon-trash"></i>
+														</a> <a href="edit-article?idArt=${a.idArticle}" 
+														class="btn btn-outline-primary btn-sm">Edit</a>
 													</div>
 												</div>
 											</div>

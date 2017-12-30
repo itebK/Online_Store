@@ -40,11 +40,21 @@ public class VendeurController {
 	}
 
 	@RequestMapping(value = "/add-article", method = RequestMethod.GET)
-	public String article(Locale locale, Model model) {
+	public String addArticle(Locale locale, Model model) {
+
 		model.addAttribute("article", new Article());
 		model.addAttribute("categories", userMetier.listCategories());
 		model.addAttribute("title", "Add article");
 		return "product-add";
+	}
+
+	@RequestMapping(value = "/edit-article", method = RequestMethod.GET)
+	public String editArticle(Locale locale, Model model, Long idArt) {
+
+		model.addAttribute("article", userMetier.getArticle(idArt));
+		model.addAttribute("categories", userMetier.listCategories());
+		model.addAttribute("title", "Edit article");
+		return "product-edit";
 	}
 
 	@RequestMapping(value = "/add-boutique", method = RequestMethod.GET)
@@ -113,11 +123,14 @@ public class VendeurController {
 		}
 		if (a.getIdArticle() != null) {
 			if (file.isEmpty()) {
-				Article cat = userMetier.getArticle(a.getIdArticle());
-				a.setPhoto(cat.getPhoto());
+				Article art = userMetier.getArticle(a.getIdArticle());
+				a.setPhoto(art.getPhoto());
 			}
+
 			userMetier.modifierArticle(a);
+
 		} else
+
 			userMetier.ajouterArticle(a, a.getCategorie().getIdCategorie());
 		model.addAttribute("article", new Article());
 		model.addAttribute("articles", userMetier.listArticles());
@@ -125,6 +138,15 @@ public class VendeurController {
 		model.addAttribute("title", "Home");
 
 		return "home";
+	}
+
+	@RequestMapping(value = "/suppArt")
+	public String supp(Long idArt, Model model) {
+		userMetier.supprimerArticle(idArt);
+		model.addAttribute("produit", new Article());
+		model.addAttribute("produits", userMetier.listArticles());
+		model.addAttribute("categories", userMetier.listCategories());
+		return "redirect:/vendeur/add-boutique";
 	}
 
 	/* AJOUTER BOUTIQUE */
