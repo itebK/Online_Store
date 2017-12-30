@@ -97,84 +97,32 @@
 	<section class="container padding-top-3x">
 		<h3 class="text-center mb-30">Top Categories</h3>
 		<div class="row">
+		<c:forEach items="${categories}" var="cat">
 			<div class="col-md-4 col-sm-6">
+			
 				<div class="card mb-30">
 					<a class="card-img-tiles" href="product-by-category">
 						<div class="inner">
 							<div class="main-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/01.jpg"
-									alt="Category">
+							
+							 <c:if test="${cat.idCategorie!=null}">
+             				<img src="photoCat?idCat=${cat.idCategorie }" alt="Category"/>
+           					</c:if>
+								
 							</div>
-							<div class="thumblist">
-								<img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/02.jpg"
-									alt="Category"><img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/03.jpg"
-									alt="Category">
-							</div>
+							
 						</div>
 					</a>
 					<div class="card-body text-center">
-						<h4 class="card-title">Clothing</h4>
+						<h4 class="card-title">${cat.nomCategorie}</h4>
 						<p class="text-muted">Starting from $49.99</p>
-						<a class="btn btn-outline-primary btn-sm" href="product-by-category">View
-							Products</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 col-sm-6">
-				<div class="card mb-30">
-					<a class="card-img-tiles" href="product-by-category">
-						<div class="inner">
-							<div class="main-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/04.jpg"
-									alt="Category">
-							</div>
-							<div class="thumblist">
-								<img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/05.jpg"
-									alt="Category"><img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/06.jpg"
-									alt="Category">
-							</div>
-						</div>
-					</a>
-					<div class="card-body text-center">
-						<h4 class="card-title">Shoes</h4>
-						<p class="text-muted">Starting from $56.00</p>
 						<a class="btn btn-outline-primary btn-sm" href="client/product-by-category">View
 							Products</a>
 					</div>
 				</div>
+			
 			</div>
-			<div class="col-md-4 col-sm-6">
-				<div class="card mb-30">
-					<a class="card-img-tiles" href="product-by-category">
-						<div class="inner">
-							<div class="main-img">
-								<img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/07.jpg"
-									alt="Category">
-							</div>
-							<div class="thumblist">
-								<img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/08.jpg"
-									alt="Category"><img
-									src="${pageContext.request.contextPath}/resources/img/shop/categories/09.jpg"
-									alt="Category">
-							</div>
-						</div>
-					</a>
-					<div class="card-body text-center">
-						<h4 class="card-title">Bags</h4>
-						<p class="text-muted">Starting from $27.00</p>
-						<a class="btn btn-outline-primary btn-sm" href="product-by-category">View
-							Products</a>
-					</div>
-				</div>
-			</div>
+		</c:forEach>
 		</div>
 		<div class="text-center">
 			<a class="btn btn-outline-secondary margin-top-none"
@@ -187,19 +135,20 @@
 		<h3 class="text-center mb-30">Featured Products</h3>
 		<div class="owl-carousel"
 			data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
+			<c:forEach items="${articles}" var="a">
 			<!-- Product-->
 			<div class="grid-item">
 				<div class="product-card">
-					<div class="product-badge text-danger">22% Off</div>
-					<a class="product-thumb" href="single-product"><img
-						src="${pageContext.request.contextPath}/resources/img/shop/products/09.jpg"
-						alt="Product"></a>
+					<div class="product-badge text-danger">${a.quantite} remain in Stock</div>
+					<a class="product-thumb" href="single-product"><c:if test="${a.idArticle!=null}">
+             				<img src="photoArt?idArt=${a.idArticle }" alt="Product"/>
+           			</c:if></a>
 					<h3 class="product-title">
-						<a href="single-product">Rocket Dog</a>
+						<a href="single-product">${a.designation }</a>
 					</h3>
 					<h4 class="product-price">
-						<del>$44.95</del>
-						$34.99
+						
+						${a.prix }TND
 					</h4>
 					<div class="product-buttons">
 						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
@@ -214,135 +163,10 @@
 					</div>
 				</div>
 			</div>
-			<!-- Product-->
-			<div class="grid-item">
-				<div class="product-card">
-					<div class="rating-stars">
-						<i class="icon-star filled"></i><i class="icon-star filled"></i><i
-							class="icon-star filled"></i><i class="icon-star filled"></i><i
-							class="icon-star"></i>
-					</div>
-					<a class="product-thumb" href="single-product"><img
-						src="${pageContext.request.contextPath}/resources/img/shop/products/03.jpg"
-						alt="Product"></a>
-					<h3 class="product-title">
-						<a href="single-product">Oakley Kickback</a>
-					</h3>
-					<h4 class="product-price">$155.00</h4>
-					<div class="product-buttons">
-						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
-							data-toggle="tooltip" title="Whishlist">
-							<i class="icon-heart"></i>
-						</button>
-						<button class="btn btn-outline-primary btn-sm" data-toast
-							data-toast-type="success" data-toast-position="topRight"
-							data-toast-icon="icon-circle-check" data-toast-title="Product"
-							data-toast-message="successfuly added to cart!">Add to
-							Cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="grid-item">
-				<div class="product-card">
-					<a class="product-thumb" href="single-product"><img
-						src="${pageContext.request.contextPath}/resources/img/shop/products/12.jpg"
-						alt="Product"></a>
-					<h3 class="product-title">
-						<a href="single-product">Vented Straw Fedora</a>
-					</h3>
-					<h4 class="product-price">$49.50</h4>
-					<div class="product-buttons">
-						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
-							data-toggle="tooltip" title="Whishlist">
-							<i class="icon-heart"></i>
-						</button>
-						<button class="btn btn-outline-primary btn-sm" data-toast
-							data-toast-type="success" data-toast-position="topRight"
-							data-toast-icon="icon-circle-check" data-toast-title="Product"
-							data-toast-message="successfuly added to cart!">Add to
-							Cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="grid-item">
-				<div class="product-card">
-					<div class="rating-stars">
-						<i class="icon-star filled"></i><i class="icon-star filled"></i><i
-							class="icon-star filled"></i><i class="icon-star filled"></i><i
-							class="icon-star filled"></i>
-					</div>
-					<a class="product-thumb" href="single-product"><img
-						src="${pageContext.request.contextPath}/resources/img/shop/products/11.jpg"
-						alt="Product"></a>
-					<h3 class="product-title">
-						<a href="single-product">Top-Sider Fathom</a>
-					</h3>
-					<h4 class="product-price">$90.00</h4>
-					<div class="product-buttons">
-						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
-							data-toggle="tooltip" title="Whishlist">
-							<i class="icon-heart"></i>
-						</button>
-						<button class="btn btn-outline-primary btn-sm" data-toast
-							data-toast-type="success" data-toast-position="topRight"
-							data-toast-icon="icon-circle-check" data-toast-title="Product"
-							data-toast-message="successfuly added to cart!">Add to
-							Cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="grid-item">
-				<div class="product-card">
-					<a class="product-thumb" href="single-product"><img
-						src="${pageContext.request.contextPath}/resources/img/shop/products/04.jpg"
-						alt="Product"></a>
-					<h3 class="product-title">
-						<a href="single-product">Waist Leather Belt</a>
-					</h3>
-					<h4 class="product-price">$47.00</h4>
-					<div class="product-buttons">
-						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
-							data-toggle="tooltip" title="Whishlist">
-							<i class="icon-heart"></i>
-						</button>
-						<button class="btn btn-outline-primary btn-sm" data-toast
-							data-toast-type="success" data-toast-position="topRight"
-							data-toast-icon="icon-circle-check" data-toast-title="Product"
-							data-toast-message="successfuly added to cart!">Add to
-							Cart</button>
-					</div>
-				</div>
-			</div>
-			<!-- Product-->
-			<div class="grid-item">
-				<div class="product-card">
-					<div class="product-badge text-danger">50% Off</div>
-					<a class="product-thumb" href="single-product"><img
-						src="${pageContext.request.contextPath}/resources/img/shop/products/01.jpg"
-						alt="Product"></a>
-					<h3 class="product-title">
-						<a href="single-product">Unionbay Park</a>
-					</h3>
-					<h4 class="product-price">
-						<del>$99.99</del>
-						$49.99
-					</h4>
-					<div class="product-buttons">
-						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
-							data-toggle="tooltip" title="Whishlist">
-							<i class="icon-heart"></i>
-						</button>
-						<button class="btn btn-outline-primary btn-sm" data-toast
-							data-toast-type="success" data-toast-position="topRight"
-							data-toast-icon="icon-circle-check" data-toast-title="Product"
-							data-toast-message="successfuly added to cart!">Add to
-							Cart</button>
-					</div>
-				</div>
-			</div>
+</c:forEach>    
+      
+
+
 		</div>
 	</section>
 	

@@ -38,33 +38,30 @@
 				</div>
 				<div class="row">
 					<!-- Categories-->
+					<c:forEach items="${categories}" var="cat">
 					<div class="col-sm-6">
 						<div class="card mb-30">
 							<a class="card-img-tiles" href="product-by-category">
 								<div class="inner">
-									<div class="main-img">
-										<img
-											src="${pageContext.request.contextPath}/resources/img/shop/categories/16.jpg"
-											alt="Category">
-									</div>
-									<div class="thumblist">
-										<img
-											src="${pageContext.request.contextPath}/resources/img/shop/categories/17.jpg"
-											alt="Category"><img
-											src="${pageContext.request.contextPath}/resources/img/shop/categories/18.jpg"
-											alt="Category">
-									</div>
-								</div>
+							<div class="main-img">
+							
+							 <c:if test="${cat.idCategorie!=null}">
+             				<img src="photoCat?idCat=${cat.idCategorie }" alt="Category"/>
+           					</c:if>
+								
+							</div>
+							
+						</div>
 							</a>
 							<div class="card-body text-center">
-								<h4 class="card-title">Watches</h4>
+								<h4 class="card-title">${cat.nomCategorie}</h4>
 								<p class="text-muted">Starting from $79.99</p>
 								<a class="btn btn-outline-primary btn-sm"
 									href="product-by-category">View Products</a>
 							</div>
 						</div>
 					</div>
-
+</c:forEach>
 
 				</div>
 			</div>
@@ -75,9 +72,10 @@
 					<section class="widget widget-categories">
 						<h3 class="widget-title">Stores</h3>
 						<ul>
-							<li><a href="#">Adidas</a><span>(254)</span></li>
-							<li><a href="#">Bilabong</a><span>(39)</span></li>
-							<li><a href="#">Brooks</a><span>(205)</span></li>
+							  <c:forEach items="${categories}" var="cat">
+                  					<li class="has-children expanded"><a href="#">${cat.nomCategorie}</a><span>(1138)</span>
+                  					</li>
+         					</c:forEach> 
 						</ul>
 					</section>
 				</aside>

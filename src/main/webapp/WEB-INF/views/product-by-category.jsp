@@ -92,41 +92,7 @@
                   </footer>
                 </form>
               </section>
-              <!-- Widget Brand Filter-->
-              <section class="widget">
-                <h3 class="widget-title">Filter by Brand</h3>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">Adidas&nbsp;<span class="text-muted">(254)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">Bilabong&nbsp;<span class="text-muted">(39)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">Calvin Klein&nbsp;<span class="text-muted">(128)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">Nike&nbsp;<span class="text-muted">(310)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">Tommy Bahama&nbsp;<span class="text-muted">(42)</span></span>
-                </label>
-              </section>
-              <!-- Widget Size Filter-->
-              <section class="widget">
-                <h3 class="widget-title">Filter by Size</h3>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">XL&nbsp;<span class="text-muted">(208)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">L&nbsp;<span class="text-muted">(311)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">M&nbsp;<span class="text-muted">(485)</span></span>
-                </label>
-                <label class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">S&nbsp;<span class="text-muted">(213)</span></span>
-                </label>
-              </section>
+       
               <!-- Promo Banner-->
               <section class="promo-box" style="background-image: url(${pageContext.request.contextPath}/resources/img/banners/02.jpg);">
                 <!-- Choose between .overlay-dark (#000) or .overlay-light (#fff) with default opacity of 50%. You can overrride default color and opacity values via 'style' attribute.--><span class="overlay-dark" style="opacity: .45;"></span>
