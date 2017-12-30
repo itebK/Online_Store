@@ -210,7 +210,7 @@
 								</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAnonymous()">
-								<li><a href="<c:url value='/store/login'/>"> <i
+								<li><a href="<c:url value='/login'/>"> <i
 										class="icon-lock"></i>Login/Inscription
 
 								</a></li>
