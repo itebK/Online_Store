@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -25,6 +27,8 @@ public class HomeController {
 
 	@Autowired
 	private UserBoutiqueMetier userMetier;
+
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {

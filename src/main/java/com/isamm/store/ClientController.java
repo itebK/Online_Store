@@ -24,7 +24,7 @@ public class ClientController {
 	@Autowired
 	private UserBoutiqueMetier userMetier;
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
 	/* PRODUIT */
 	@RequestMapping(value = "/single-product")

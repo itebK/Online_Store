@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,6 +33,8 @@ import com.isamm.store.metier.UserBoutiqueMetier;
 public class UserController {
 	@Autowired
 	private UserBoutiqueMetier userMetier;
+
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	@RequestMapping("/saveUser")
 	public String saveUser(@Valid User u, BindingResult bindingResult, Model model) throws IOException {
