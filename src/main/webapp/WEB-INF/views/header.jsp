@@ -158,7 +158,7 @@
 <sec:authorize access="hasRole('VENDEUR_ROLE')">
 		<nav class="site-menu">
 			<ul>
-				<li><a href="/store/vendeur/add-boutique"><span>Add Boutique</span></a></li>
+				<li><a href="/store/vendeur/add-boutique"><span>My Shop</span></a></li>
 				<li><a href="/store/vendeur/add-category"><span>Add Category</span></a></li>
 				<li><a href="/store/vendeur/add-article"><span>Add Article</span></a></li>
 			</ul>
