@@ -36,9 +36,22 @@
 						</div>
 					</div>
 					<div class="user-info">
-                <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src="${pageContext.request.contextPath}/resources/img/account/user-ava.jpg" alt="User"></div>
+                <div class="user-avatar">
+               <f:form modelAttribute="user" method="post" id="form_file" enctype="multipart/form-data" action="saveImgProfile">
+                <input  onchange="document.getElementById('form_file').submit()" type="file" class="edit-avatar" name="file"/>
+                
+                </f:form>
+                <img src="photoProfile?idUser=${user.idUser}" width="auto" alt="User"></div>
                 <div class="user-data">
-                  <h4>Daniel Adams</h4><span>Joined February 06, 2017</span>
+                  <h4>${user.getUsername() }</h4>
+                  <span>
+                  	<sec:authorize access="hasRole('VENDEUR_ROLE')">
+						Vendeur
+					</sec:authorize>
+					<sec:authorize access="!hasRole('VENDEUR_ROLE')">
+						Client
+					</sec:authorize>
+                  </span>
                 </div>
               </div>
             </aside>

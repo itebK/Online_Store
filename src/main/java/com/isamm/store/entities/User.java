@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
@@ -29,6 +30,8 @@ public class User implements Serializable {
 	@Email
 	private String email;
 	private String password;
+	@Lob
+	private byte[] photo;
 	private String tel;
 	private boolean actived = true;
 	@OneToMany(mappedBy = "user")
@@ -50,6 +53,14 @@ public class User implements Serializable {
 		this.password = password;
 		this.tel = tel;
 		this.actived = actived;
+	}
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
 	}
 
 	public boolean isActived() {
