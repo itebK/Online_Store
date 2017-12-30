@@ -195,9 +195,13 @@
 												<sec:authentication property="principal.username" />
 											</sec:authorize>
 										</h6>
-										<span class="text-xs text-muted"> <sec:authentication
-												property="principal.authorities" />
-
+										<span class="text-xs text-muted"> 
+										<sec:authorize access="hasRole('VENDEUR_ROLE')">
+										Vendeur
+										</sec:authorize>
+										<sec:authorize access="!hasRole('VENDEUR_ROLE')">
+										Client
+										</sec:authorize>
 										</span>
 									</div>
 								</li>

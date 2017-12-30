@@ -116,6 +116,7 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User u = userMetier.getUserParNom(auth.getName());
 		model.addAttribute("user", u);
+
 		model.addAttribute("title", "Profile");
 		logger.info("afficher profile de l'utilisateur connecter");
 
