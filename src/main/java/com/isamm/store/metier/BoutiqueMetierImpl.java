@@ -93,6 +93,11 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 		return dao.getArticle(idArt);
 	}
 
+	@Override
+	public List<Article> getArticleParIdBoutique(Long idBout) {
+		return dao.getArticleParIdBoutique(idBout);
+	}
+
 	/* BOUTIQUE */
 
 	@Override

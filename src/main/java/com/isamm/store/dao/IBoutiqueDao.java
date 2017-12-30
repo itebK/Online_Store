@@ -32,6 +32,8 @@ public interface IBoutiqueDao {
 
 	public List<Article> listArticlesParCategorie(Long idCat);
 
+	public List<Article> getArticleParIdBoutique(Long idBout);
+
 	public Article getArticle(Long idArt);
 
 	public void supprimerArticle(Long idArt);

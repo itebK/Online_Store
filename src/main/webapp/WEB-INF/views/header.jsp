@@ -66,7 +66,7 @@
 				<li class="has-children"><span> <a href="/store/home">Home</a>
 				</span></li>
 				<sec:authorize access="hasRole('VENDEUR_ROLE')">
-					<li class="has-children"><span> <a href="#">My Shop</a>
+					<li class="has-children"><span> <a href="/store/vendeur/add-boutique">My Shop</a>
 					</span></li>
 				</sec:authorize>
 				<li class="has-children"><span> <a

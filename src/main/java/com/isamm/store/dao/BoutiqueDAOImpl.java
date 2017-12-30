@@ -90,6 +90,12 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	}
 
 	@Override
+	public List<Article> getArticleParIdBoutique(Long idBout) {
+		return em.createQuery("SELECT a FROM Article a WHERE a.boutique.idBoutique = :x").setParameter("x", idBout)
+				.getResultList();
+	}
+
+	@Override
 	public void supprimerArticle(Long idArt) {
 		em.remove(getArticle(idArt));
 
