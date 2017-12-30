@@ -78,6 +78,14 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	}
 
 	@Override
+	public List<Article> getArticleParMc(String mc) {
+
+		return em.createQuery("select a from Article a where a.designation like :mc").setParameter("mc", "%" + mc + "%")
+				.getResultList();
+
+	}
+
+	@Override
 	public List<Article> listArticlesParCategorie(Long idCat) {
 		Query q = em.createQuery("select a from Article a where  a.idCategorie = :x");
 		q.setParameter("x", idCat);
@@ -104,6 +112,24 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	@Override
 	public void modifierArticle(Article a) {
 		em.merge(a);
+
+	}
+
+	@Override
+	public List<Article> listFavoris(Long idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ajouterFavoris(Long idArticle, Long idUser) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void supprimerFavoris(Long idArticle, Long idUser) {
+		// TODO Auto-generated method stub
 
 	}
 

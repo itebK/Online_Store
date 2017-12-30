@@ -84,6 +84,11 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 	}
 
 	@Override
+	public List<Article> getArticleParMc(String mc) {
+		return dao.getArticleParMc(mc);
+	}
+
+	@Override
 	public List<Article> listArticlesParCategorie(Long idCat) {
 		return dao.listArticlesParCategorie(idCat);
 	}
@@ -169,6 +174,24 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 	@Override
 	public User getUserParNom(String username) {
 		return dao.getUserParNom(username);
+	}
+
+	@Override
+	public List<Article> listFavoris(Long idUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void ajouterFavoris(Long idArticle, Long idUser) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void supprimerFavoris(Long idArticle, Long idUser) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

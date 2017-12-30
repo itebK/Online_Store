@@ -45,6 +45,15 @@ public class ClientController {
 		return "category-product";
 	}
 
+	@RequestMapping(value = "/favorisArt")
+	public String supp(Long idArt, Model model) {
+		userMetier.supprimerArticle(idArt);
+		model.addAttribute("produit", new Article());
+		model.addAttribute("produits", userMetier.listArticles());
+		model.addAttribute("categories", userMetier.listCategories());
+		return "redirect:/vendeur/add-boutique";
+	}
+
 	@RequestMapping(value = "/search-product")
 	public String search(Locale locale, Model model) {
 

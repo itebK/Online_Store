@@ -32,7 +32,11 @@
 						style="background-image: url(${pageContext.request.contextPath}/resources/img/account/user-cover-img.jpg);">
 						<div class="info-label" data-toggle="tooltip"
 							title="You currently have 290 Reward Points to spend">
-							<i class="icon-medal"></i>290 points
+							<i class="icon-medal"></i>
+							
+							nbr cmd
+							
+							
 						</div>
 					</div>
 					<div class="user-info">
