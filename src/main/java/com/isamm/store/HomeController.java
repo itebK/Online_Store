@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Locale;
 
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
@@ -26,6 +28,8 @@ public class HomeController {
 	@Autowired
 	private UserBoutiqueMetier userMetier;
 
+	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("categories", userMetier.listCategories());
@@ -41,7 +45,7 @@ public class HomeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		logger.info("afficher Home");
 		return "home";
 	}
 
@@ -65,7 +69,7 @@ public class HomeController {
 	public String error(Locale locale, Model model) {
 
 		model.addAttribute("title", "404 not found");
-
+		logger.info("page introuvable");
 		return "404";
 	}
 

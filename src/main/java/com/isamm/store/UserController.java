@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,6 +34,8 @@ public class UserController {
 	@Autowired
 	private UserBoutiqueMetier userMetier;
 
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
 	@RequestMapping("/saveUser")
 	public String saveUser(@Valid User u, BindingResult bindingResult, Model model) throws IOException {
 
@@ -40,6 +44,8 @@ public class UserController {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("user", u);
 			model.addAttribute("message", "User is not saved");
+			logger.warn("erreur lors d'inscription");
+
 			return "login";
 		}
 		System.out.println(u.getEmail());
@@ -76,6 +82,7 @@ public class UserController {
 
 		model.addAttribute("title", "Login");
 		model.addAttribute("message", "User is saved");
+		logger.info("utilisateur inscrit avec succés");
 
 		return "login";
 	}
@@ -85,6 +92,9 @@ public class UserController {
 		User user = new User();
 		model.addAttribute("user", user);
 		model.addAttribute("title", "Login");
+
+		logger.info("afficher page login");
+
 		return "login";
 	}
 
@@ -94,6 +104,7 @@ public class UserController {
 		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
+		logger.info("deconnexion du compte");
 
 		return "redirect:/login?logout";
 	}
@@ -106,6 +117,10 @@ public class UserController {
 		User u = userMetier.getUserParNom(auth.getName());
 		model.addAttribute("user", u);
 		model.addAttribute("title", "Profile");
+		logger.info("afficher profile de l'utilisateur connecter");
+
+		model.addAttribute("message", "Welcome " + u.getUsername() + " to your profile");
+
 		return "profile";
 	}
 
@@ -113,6 +128,7 @@ public class UserController {
 	public String wishlist(Locale locale, Model model) {
 
 		model.addAttribute("title", "Profile-wishlist");
+		logger.info("afficher liste des favoris");
 		return "profile-wishlist";
 	}
 
@@ -120,6 +136,9 @@ public class UserController {
 	public String order(Locale locale, Model model) {
 
 		model.addAttribute("title", "Profile-orders");
+
+		logger.info("afficher historique des commandes");
+
 		return "profile-orders";
 	}
 
@@ -127,6 +146,7 @@ public class UserController {
 	public String address(Locale locale, Model model) {
 
 		model.addAttribute("title", "Profile-address");
+		logger.info("afficher adresse de l'utilisateur connecter");
 		return "profile-address";
 	}
 
@@ -134,6 +154,9 @@ public class UserController {
 	public String cart(Locale locale, Model model) {
 
 		model.addAttribute("title", "Profile-cart");
+
+		logger.info("affiicher liste des produits dans le panier de l'utilisateur connecter");
+
 		return "profile-cart";
 	}
 
@@ -147,7 +170,7 @@ public class UserController {
 		} else {
 			model.addObject("msg", "You do not have permission to access this page!");
 		}
-
+		logger.info("accés n'est pas autoriser");
 		model.setViewName("403");
 		return model;
 
