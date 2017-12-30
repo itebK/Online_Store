@@ -92,6 +92,9 @@ public class UserController {
 		User user = new User();
 		model.addAttribute("user", user);
 		model.addAttribute("title", "Login");
+
+		model.addAttribute("message", "Welcome " + user.getUsername() + " to your profile");
+
 		logger.info("afficher page login");
 
 		return "login";
