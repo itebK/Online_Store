@@ -47,7 +47,7 @@ public class VendeurController {
 	public String boutique(Locale locale, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String nameVendeur = auth.getName();
-		// model.addAttribute("boutique", new Boutique());
+		model.addAttribute("boutique", new Boutique());
 
 		try {
 			model.addAttribute("boutiques",
