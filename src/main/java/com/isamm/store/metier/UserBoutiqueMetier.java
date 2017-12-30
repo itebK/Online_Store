@@ -34,6 +34,8 @@ public interface UserBoutiqueMetier {
 
 	public Article getArticle(Long idArt);
 
+	public List<Article> getArticleParIdBoutique(Long idBout);
+
 	public void supprimerArticle(Long idArt);
 
 	public void modifierArticle(Article a);

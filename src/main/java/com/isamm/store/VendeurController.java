@@ -1,13 +1,16 @@
 package com.isamm.store;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.isamm.store.entities.Article;
@@ -45,13 +49,18 @@ public class VendeurController {
 
 	@RequestMapping(value = "/add-boutique", method = RequestMethod.GET)
 	public String boutique(Locale locale, Model model) {
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String nameVendeur = auth.getName();
+
 		model.addAttribute("boutique", new Boutique());
 
 		try {
-			model.addAttribute("boutiques",
-					userMetier.getBoutiqueParUser(userMetier.getUserParNom(nameVendeur).getIdUser()));
+			Boutique b = new Boutique();
+			b = userMetier.getBoutiqueParUser(userMetier.getUserParNom(nameVendeur).getIdUser());
+			model.addAttribute("boutiques", b);
+			model.addAttribute("articleParBoutique", userMetier.getArticleParIdBoutique(b.getIdBoutique()));
+			System.out.println(userMetier.getArticleParIdBoutique(b.getIdBoutique()));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -137,6 +146,23 @@ public class VendeurController {
 		model.addAttribute("title", "Home");
 
 		return "home";
+
+	}
+
+	/* PHOTO ARTICLE */
+	@RequestMapping(value = "photoArt", produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] photArt(Long idArt) throws IOException {
+		Article a = userMetier.getArticle(idArt);
+		return IOUtils.toByteArray(new ByteArrayInputStream(a.getPhoto()));
+	}
+
+	/* PHOTO CATEGORIE */
+	@RequestMapping(value = "photoCat", produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] photCat(Long idCat) throws IOException {
+		Categorie a = userMetier.getCategorie(idCat);
+		return IOUtils.toByteArray(new ByteArrayInputStream(a.getPhoto()));
 	}
 
 }
