@@ -45,7 +45,7 @@ public class HomeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		logger.info("afficher Home");
 		return "home";
 	}
 
@@ -69,7 +69,7 @@ public class HomeController {
 	public String error(Locale locale, Model model) {
 
 		model.addAttribute("title", "404 not found");
-
+		logger.info("page introuvable");
 		return "404";
 	}
 

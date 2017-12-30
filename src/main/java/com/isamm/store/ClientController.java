@@ -31,6 +31,8 @@ public class ClientController {
 	public String single(Locale locale, Model model) {
 
 		model.addAttribute("title", "Single product");
+
+		logger.info("afficher un produit spécifique");
 		return "single-product";
 	}
 
@@ -38,11 +40,15 @@ public class ClientController {
 	public String categorie(Locale locale, Model model) {
 		model.addAttribute("categories", userMetier.listCategories());
 		model.addAttribute("title", "Category product");
+
+		logger.info("afficher les categories");
 		return "category-product";
 	}
 
 	@RequestMapping(value = "/search-product")
 	public String search(Locale locale, Model model) {
+
+		logger.info("chercher produit");
 
 		model.addAttribute("title", "Search product");
 		return "search-product";
@@ -53,6 +59,8 @@ public class ClientController {
 		model.addAttribute("articles", userMetier.listArticles());
 		model.addAttribute("categories", userMetier.listCategories());
 		model.addAttribute("title", "Product by category");
+
+		logger.info("afficher produit d'une categorie");
 
 		return "product-by-category";
 	}
