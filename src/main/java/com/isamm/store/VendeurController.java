@@ -31,6 +31,7 @@ public class VendeurController {
 	@RequestMapping(value = "/add-category", method = RequestMethod.GET)
 	public String categorie(Locale locale, Model model) {
 		model.addAttribute("categorie", new Categorie());
+		model.addAttribute("title", "Add category");
 		return "category-add";
 	}
 
@@ -38,6 +39,7 @@ public class VendeurController {
 	public String article(Locale locale, Model model) {
 		model.addAttribute("article", new Article());
 		model.addAttribute("categories", userMetier.listCategories());
+		model.addAttribute("title", "Add article");
 		return "product-add";
 	}
 
@@ -54,6 +56,7 @@ public class VendeurController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		model.addAttribute("title", "Add boutique");
 		return "boutique-add";
 	}
 
@@ -80,6 +83,9 @@ public class VendeurController {
 			userMetier.ajouterCategorie(c);
 		model.addAttribute("categorie", new Categorie());
 		model.addAttribute("categories", userMetier.listCategories());
+		model.addAttribute("message", "Category is saved");
+		model.addAttribute("title", "Home");
+
 		return "home";
 	}
 
@@ -106,6 +112,9 @@ public class VendeurController {
 			userMetier.ajouterArticle(a, a.getCategorie().getIdCategorie());
 		model.addAttribute("article", new Article());
 		model.addAttribute("articles", userMetier.listArticles());
+		model.addAttribute("message", "Article is saved");
+		model.addAttribute("title", "Home");
+
 		return "home";
 	}
 
@@ -124,6 +133,9 @@ public class VendeurController {
 			userMetier.ajouterBoutique(b, userMetier.getUserParNom(nameVendeur).getIdUser());
 		model.addAttribute("boutique", new Boutique());
 		// model.addAttribute("articles", userMetier.listArticles());
+		model.addAttribute("message", "Boutique is saved");
+		model.addAttribute("title", "Home");
+
 		return "home";
 	}
 

@@ -34,8 +34,12 @@ public class UserController {
 
 	@RequestMapping("/saveUser")
 	public String saveUser(@Valid User u, BindingResult bindingResult, Model model) throws IOException {
+
+		model.addAttribute("title", "Login");
+
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("user", u);
+			model.addAttribute("message", "User is not saved");
 			return "login";
 		}
 		System.out.println(u.getEmail());
@@ -70,6 +74,9 @@ public class UserController {
 			userMetier.ajouterUser(u);
 		}
 
+		model.addAttribute("title", "Login");
+		model.addAttribute("message", "User is saved");
+
 		return "login";
 	}
 
@@ -77,15 +84,17 @@ public class UserController {
 	public String login(Model model) {
 		User user = new User();
 		model.addAttribute("user", user);
+		model.addAttribute("title", "Login");
 		return "login";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+	public String logoutPage(HttpServletRequest request, HttpServletResponse response, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
+
 		return "redirect:/login?logout";
 	}
 
@@ -96,6 +105,7 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User u = userMetier.getUserParNom(auth.getName());
 		model.addAttribute("user", u);
+		model.addAttribute("title", "Profile");
 		return "profile";
 	}
 

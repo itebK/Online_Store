@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,37 +55,27 @@
 	<div class="offcanvas-container" id="shop-categories">
 		<div class="offcanvas-header">
 			<h3 class="offcanvas-title">
-			<sec:authorize access="isAuthenticated()">  
-			<sec:authentication property="principal.username" />
-			</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<sec:authentication property="principal.username" />
+				</sec:authorize>
 			</h3>
 		</div>
 		<nav class="offcanvas-menu">
 			<ul class="menu">
 
-				<li class="has-children">
-					<span>
-					<a href="/store/home">Home</a>
-					</span>
-				</li>
+				<li class="has-children"><span> <a href="/store/home">Home</a>
+				</span></li>
 				<sec:authorize access="hasRole('VENDEUR_ROLE')">
-				<li class="has-children">
-					<span>
-					<a href="#">My Shop</a>
-					</span>
-				</li>
+					<li class="has-children"><span> <a href="#">My Shop</a>
+					</span></li>
 				</sec:authorize>
-				<li class="has-children">
-					<span>
-					<a href="/store/client/product-by-category">Articles</a>
-					</span>
-				</li>
-				<li class="has-children">
-					<span>
-					<a href="/store/client/category-product">Categories</a>
-					</span>
-				</li>
-				
+				<li class="has-children"><span> <a
+						href="/store/client/product-by-category">Articles</a>
+				</span></li>
+				<li class="has-children"><span> <a
+						href="/store/client/category-product">Categories</a>
+				</span></li>
+
 
 
 			</ul>
@@ -165,8 +156,11 @@
 		</div>
 		<!-- Main Navigation-->
 
-
-
+		<nav class="site-menu">
+			<ul>
+				<li><a href="home"><span>Home</span></a></li>
+			</ul>
+		</nav>
 
 		<!-- Toolbar-->
 		<div class="toolbar">
@@ -176,45 +170,46 @@
 						<i class="icon-search"></i>
 					</div>
 					<div class="account">
-					
+
 
 
 						<a href="profile"></a><i class="icon-head"></i>
 						<ul class="toolbar-dropdown">
-						<sec:authorize access="hasRole('CLIENT_ROLE')">
-							<li class="sub-menu-user">
-								<div class="user-ava">
-									<img
-										src="${pageContext.request.contextPath}/resources/img/account/user-ava-sm.jpg"
-										alt="">
-								</div>
-								<div class="user-info">
-									<h6 class="user-name">
-									<sec:authorize access="isAuthenticated()">  
-									<sec:authentication property="principal.username" />
-									</sec:authorize>
-									</h6>
-									<span class="text-xs text-muted">
-									
-									<sec:authentication property="principal.authorities" />
-									
-									</span>
-								</div>
-							</li>
-							<li><a href="/store/profile">My Profile</a></li>
-							<li><a href="/store/profile-orders">Orders List</a></li>
-							<li><a href="/store/profile-wishlist">Wishlist</a></li>
-							<li class="sub-menu-separator"></li>
-							<li><a href="<c:url value='/j_spring_security_logout'/>"> <i class="icon-unlock"></i>Logout
-							</a></li>
+							<sec:authorize access="hasRole('CLIENT_ROLE')">
+								<li class="sub-menu-user">
+									<div class="user-ava">
+										<img
+											src="${pageContext.request.contextPath}/resources/img/account/user-ava-sm.jpg"
+											alt="">
+									</div>
+									<div class="user-info">
+										<h6 class="user-name">
+											<sec:authorize access="isAuthenticated()">
+												<sec:authentication property="principal.username" />
+											</sec:authorize>
+										</h6>
+										<span class="text-xs text-muted"> <sec:authentication
+												property="principal.authorities" />
+
+										</span>
+									</div>
+								</li>
+								<li><a href="/store/profile">My Profile</a></li>
+								<li><a href="/store/profile-orders">Orders List</a></li>
+								<li><a href="/store/profile-wishlist">Wishlist</a></li>
+								<li class="sub-menu-separator"></li>
+								<li><a href="<c:url value='/j_spring_security_logout'/>">
+										<i class="icon-unlock"></i>Logout
+								</a></li>
 							</sec:authorize>
 							<sec:authorize access="isAnonymous()">
-							<li><a href="<c:url value='/login'/>"> <i class="icon-lock"></i>Login/Inscription
-							
-							</a></li>
+								<li><a href="<c:url value='/login'/>"> <i
+										class="icon-lock"></i>Login/Inscription
+
+								</a></li>
 							</sec:authorize>
 						</ul>
-						
+
 					</div>
 					<div class="cart">
 						<a href="/store/profile-cart"></a><i class="icon-bag"></i><span
@@ -273,3 +268,12 @@
 			</div>
 		</div>
 	</header>
+	
+	
+<c:if test="${not empty message}">
+<div class="alert alert-info alert-dismissible fade show text-center">
+<span class="alert-close" data-dismiss="alert"></span>
+<i class="icon-layers"></i>&nbsp;&nbsp;
+<strong>Info alert:</strong> ${message }
+</div>
+</c:if>

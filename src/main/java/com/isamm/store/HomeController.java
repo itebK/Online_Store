@@ -34,6 +34,7 @@ public class HomeController {
 		String name = auth.getName();
 		model.addAttribute("name", name);
 		model.addAttribute("boutique", new Boutique());
+		model.addAttribute("title", "Home");
 
 		try {
 			model.addAttribute("boutiques", userMetier.getBoutiqueParUser(userMetier.getUserParNom(name).getIdUser()));

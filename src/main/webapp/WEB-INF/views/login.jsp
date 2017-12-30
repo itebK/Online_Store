@@ -39,8 +39,8 @@
               </div>
               <h4 class="margin-bottom-1x">Or using form below</h4>
               <div class="form-group input-group">
-                <input class="form-control" type="text" placeholder="Email" name="j_username" required>
-                <span class="input-group-addon"><i class="icon-mail"></i></span>
+                <input class="form-control" type="text" placeholder="Username" name="j_username" required>
+                <span class="input-group-addon"><i class="icon-head"></i></span>
               </div>
               <div class="form-group input-group">
                 <input class="form-control" type="password" placeholder="Password"  name="j_password" required><span class="input-group-addon"><i class="icon-lock"></i></span>

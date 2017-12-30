@@ -52,6 +52,8 @@ public class ClientController {
 	public String byCategory(Locale locale, Model model) {
 		model.addAttribute("articles", userMetier.listArticles());
 		model.addAttribute("categories", userMetier.listCategories());
+		model.addAttribute("title", "Product by category");
+
 		return "product-by-category";
 	}
 
