@@ -20,7 +20,7 @@ public class Article implements Serializable {
 	private double prix;
 	private int quantite;
 	private boolean selectionne;
-	private String photo;
+	private byte[] photo;
 	@ManyToOne
 	@JoinColumn(name = "idCategorie")
 	private Categorie categorie;
@@ -28,7 +28,33 @@ public class Article implements Serializable {
 	@JoinColumn(name = "idBoutique")
 	private Boutique boutique;
 
-	// private Collection<LigneCommande> lignes;
+	public Article() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Article(Long idArticle, String designation, String description, double prix, int quantite,
+			boolean selectionne, byte[] photo, Categorie categorie, Boutique boutique) {
+		super();
+		this.idArticle = idArticle;
+		this.designation = designation;
+		this.description = description;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.selectionne = selectionne;
+		this.photo = photo;
+		this.categorie = categorie;
+		this.boutique = boutique;
+	}
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
+
 	public Long getIdArticle() {
 		return idArticle;
 	}
@@ -77,14 +103,6 @@ public class Article implements Serializable {
 		this.selectionne = selectionne;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
 	public Categorie getCategorie() {
 		return categorie;
 	}
@@ -99,25 +117,6 @@ public class Article implements Serializable {
 
 	public void setBoutique(Boutique boutique) {
 		this.boutique = boutique;
-	}
-
-	public Article(Long idArticle, String designation, String description, double prix, int quantite,
-			boolean selectionne, String photo, Categorie categorie, Boutique boutique) {
-		super();
-		this.idArticle = idArticle;
-		this.designation = designation;
-		this.description = description;
-		this.prix = prix;
-		this.quantite = quantite;
-		this.selectionne = selectionne;
-		this.photo = photo;
-		this.categorie = categorie;
-		this.boutique = boutique;
-	}
-
-	public Article() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 }

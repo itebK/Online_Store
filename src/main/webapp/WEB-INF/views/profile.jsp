@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
 <jsp:include page="header.jsp" />
 
@@ -53,7 +54,68 @@
           </div>
           <div class="col-lg-8">
             <div class="padding-top-2x mt-2 hidden-lg-up"></div>
-            <form class="row">
+            
+            
+                        <f:form modelAttribute="user" class="row" method="post" action="saveUser">
+              
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-fn">Username</label>
+                  <f:input class="form-control" type="text" id="reg-fn" path="username" disabled= "${true}"/>
+                  <f:errors path="username"></f:errors>
+                </div>
+              </div>
+             <!--   <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-ln">User Type</label>
+                  <f:select class="form-control" path="roles" items="${user.roles}" itemValue="nomRole" itemLabel="nomRole" >
+                  </f:select>
+                </div>
+              </div>-->
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-email">E-mail Address</label>
+                  <f:input class="form-control" type="email" id="reg-email" path="email" required="required"/>
+                  <f:errors path="email"></f:errors>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-phone">Phone Number</label>
+                  <f:input class="form-control" type="text" id="reg-phone" path="tel" required="required"/>
+                  <f:errors path="tel"></f:errors>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-pass">Password</label>
+                  <f:input class="form-control" type="password" id="reg-pass" path="password" required="required"/>
+                  <f:errors path="password"></f:errors>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="reg-pass-confirm">Confirm Password</label>
+                  <input class="form-control" type="password" id="reg-pass-confirm" required="required">
+                  
+                </div>
+              </div>
+                         <div class="col-sm-6">
+                <div class="form-group">
+                 
+                  <f:input class="form-control" type="text" id="reg-fn" path="idUser" hidden="hidden"/>
+                  
+                </div>
+              </div>
+              <div class="col-12 text-center text-sm-right">
+                <button class="btn btn-primary margin-bottom-none" type="submit">Update Profile</button>
+              </div>
+            </f:form>
+            
+            
+            
+            
+           <!--   <form class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="account-fn">First Name</label>
@@ -99,7 +161,7 @@
                   <button class="btn btn-primary margin-right-none" type="button" data-toast data-toast-position="topRight" data-toast-type="success" data-toast-icon="icon-circle-check" data-toast-title="Success!" data-toast-message="Your profile updated successfuly.">Update Profile</button>
                 </div>
               </div>
-            </form>
+            </form>-->
           </div>
         </div>
       </div>

@@ -49,6 +49,8 @@ public interface IBoutiqueDao {
 
 	public Boutique getBoutiqueParNom(String nomBoutique);
 
+	public Boutique getBoutiqueParUser(Long idUser);
+
 	public List<Boutique> listBoutiques();
 
 	/* COMMANDE */
@@ -62,5 +64,7 @@ public interface IBoutiqueDao {
 	public void modifierUser(User u);
 
 	public User getUser(Long idUser);
+
+	public User getUserParNom(String username);
 
 }

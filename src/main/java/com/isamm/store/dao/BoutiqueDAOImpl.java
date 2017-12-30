@@ -137,6 +137,12 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 		return em.createQuery("from Boutique").getResultList();
 	}
 
+	@Override
+	public Boutique getBoutiqueParUser(Long idUser) {
+		return (Boutique) em.createQuery("SELECT b FROM Boutique b WHERE b.user.idUser = :id")
+				.setParameter("id", idUser).getSingleResult();
+	}
+
 	/* COMMANDE */
 	@Override
 	public Commande enregistrerCommande(Panier p, User u) {
@@ -175,6 +181,13 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	@Override
 	public User getUser(Long idUser) {
 		return em.find(User.class, idUser);
+	}
+
+	@Override
+	public User getUserParNom(String username) {
+		return (User) em.createQuery("SELECT u FROM User u WHERE u.username = :x").setParameter("x", username)
+				.getSingleResult();
+
 	}
 
 }

@@ -26,25 +26,6 @@
         <div class="row">
           <!-- Products-->
           <div class="col-xl-9 col-lg-8 order-lg-2">
-            <!-- Shop Toolbar-->
-            <div class="shop-toolbar padding-bottom-1x mb-2">
-             <div class="column">
-              </div>
-              <div class="column">
-                <div class="shop-sorting">
-                  <label for="sorting">Sort by:</label>
-                  <select class="form-control" id="sorting">
-                    <option>Popularity</option>
-                    <option>Low - High Price</option>
-                    <option>High - Low Price</option>
-                    <option>Avarage Rating</option>
-                    <option>A - Z Order</option>
-                    <option>Z - A Order</option>
-                  </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
-                </div>
-              </div>
-             
-            </div>
             <!-- Products Grid-->
             <div class="isotope-grid cols-3 mb-2">
               <div class="gutter-sizer"></div>
@@ -66,23 +47,9 @@
                 </div>
               </div>
               <!-- Product-->
-             
+      
              
             </div>
-            <!-- Pagination-->
-            <nav class="pagination">
-              <div class="column">
-                <ul class="pages">
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li>...</li>
-                  <li><a href="#">12</a></li>
-                </ul>
-              </div>
-              <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
-            </nav>
           </div>
           <!-- Sidebar          -->
           <div class="col-xl-3 col-lg-4 order-lg-1">

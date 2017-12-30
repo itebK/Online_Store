@@ -19,8 +19,8 @@ public class TestJPA {
 					new String[] { "ApplicationContext.xml" });
 			UserBoutiqueMetier metier = (UserBoutiqueMetier) context.getBean("metier");
 			List<Categorie> cats1 = metier.listCategories();
-			metier.ajouterCategorie(new Categorie("Ordinateur", "Ordinateurs", null, ""));
-			metier.ajouterCategorie(new Categorie("Imprimantes", "Imprimantes", null, ""));
+			metier.ajouterCategorie(new Categorie("ORDINATEURS", "ORDINATEURS", null, ""));
+			metier.ajouterCategorie(new Categorie("ORDINATEURS", "CHAUSSURES", null, ""));
 			List<Categorie> cats2 = metier.listCategories();
 			assertTrue(cats2.size() == cats1.size() + 2);
 		} catch (Exception e) {

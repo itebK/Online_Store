@@ -47,32 +47,44 @@
 <!-- Body-->
 <body>
 
-<!-- ${name}
-	 <c:choose>
-            <c:when test="${name !='anonymousUser'}">
-                <p> not empty </p>
-            </c:when>
-            <c:otherwise>
-                <p>empty</p>
-            </c:otherwise>
-        </c:choose> -->
-        
-        
+
 
 
 	<!-- Off-Canvas Category Menu-->
 	<div class="offcanvas-container" id="shop-categories">
 		<div class="offcanvas-header">
-			<h3 class="offcanvas-title">Shop Categories</h3>
+			<h3 class="offcanvas-title">
+			<sec:authorize access="isAuthenticated()">  
+			<sec:authentication property="principal.username" />
+			</sec:authorize>
+			</h3>
 		</div>
 		<nav class="offcanvas-menu">
 			<ul class="menu">
 
 				<li class="has-children">
 					<span>
-					<a href="#">Men's Shoes</a>
+					<a href="/store/home">Home</a>
 					</span>
 				</li>
+				<sec:authorize access="hasRole('VENDEUR_ROLE')">
+				<li class="has-children">
+					<span>
+					<a href="#">My Shop</a>
+					</span>
+				</li>
+				</sec:authorize>
+				<li class="has-children">
+					<span>
+					<a href="/store/client/product-by-category">Articles</a>
+					</span>
+				</li>
+				<li class="has-children">
+					<span>
+					<a href="/store/client/category-product">Categories</a>
+					</span>
+				</li>
+				
 
 
 			</ul>
@@ -177,13 +189,21 @@
 										alt="">
 								</div>
 								<div class="user-info">
-									<h6 class="user-name"><sec:authentication property="principal.username" /></h6>
-									<span class="text-xs text-muted"><sec:authentication property="principal.authorities" /></span>
+									<h6 class="user-name">
+									<sec:authorize access="isAuthenticated()">  
+									<sec:authentication property="principal.username" />
+									</sec:authorize>
+									</h6>
+									<span class="text-xs text-muted">
+									
+									<sec:authentication property="principal.authorities" />
+									
+									</span>
 								</div>
 							</li>
-							<li><a href="profile">My Profile</a></li>
-							<li><a href="profile-orders">Orders List</a></li>
-							<li><a href="profile-wishlist">Wishlist</a></li>
+							<li><a href="/store/profile">My Profile</a></li>
+							<li><a href="/store/profile-orders">Orders List</a></li>
+							<li><a href="/store/profile-wishlist">Wishlist</a></li>
 							<li class="sub-menu-separator"></li>
 							<li><a href="<c:url value='/j_spring_security_logout'/>"> <i class="icon-unlock"></i>Logout
 							</a></li>
@@ -197,7 +217,7 @@
 						
 					</div>
 					<div class="cart">
-						<a href="profile-cart"></a><i class="icon-bag"></i><span
+						<a href="/store/profile-cart"></a><i class="icon-bag"></i><span
 							class="count">3</span><span class="subtotal">$289.68</span>
 						<div class="toolbar-dropdown">
 
@@ -239,11 +259,11 @@
 							<div class="toolbar-dropdown-group">
 								<div class="column">
 									<a class="btn btn-sm btn-block btn-secondary"
-										href="profile-cart">View Cart</a>
+										href="/store/profile-cart">View Cart</a>
 								</div>
 								<div class="column">
 									<a class="btn btn-sm btn-block btn-success"
-										href="profile-cart">Checkout</a>
+										href="/store/profile-cart">Checkout</a>
 								</div>
 							</div>
 
