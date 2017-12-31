@@ -133,7 +133,7 @@
 	<!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 	<header class="navbar navbar-sticky">
 		<!-- Search-->
-		<form class="site-search" method="get">
+		<form class="site-search" method="get" action="/store/searchParMc">
 			<input type="text" name="site_search" placeholder="Type to search...">
 			<div class="search-tools">
 				<span class="clear-search">Clear</span><span class="close-search"><i

@@ -213,6 +213,15 @@ public class UserController {
 
 	}
 
+	/* SEARCH ARTICLE */
+	@RequestMapping(value = "/searchParMc")
+	public String searchParMc(String site_search, Model model) {
+		model.addAttribute("articles", userMetier.getArticleParMc(site_search));
+		model.addAttribute("categories", userMetier.listCategories());
+		return "product-by-category";
+
+	}
+
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied(Principal user) {
 

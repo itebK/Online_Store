@@ -37,11 +37,11 @@
               <div class="grid-item">
                 <div class="product-card">
                     <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
-                    </div><a class="product-thumb" href="/store/client/single-product">
+                    </div><a class="product-thumb" href="/store/client/single-product?idArt=${a.idArticle}">
                      <c:if test="${a.idArticle!=null}">
              				<img src="photoArt?idArt=${a.idArticle }" alt="Product"/>
            			</c:if></a>
-                  <h3 class="product-title"><a href="/store/client/single-product">${a.designation }</a></h3>
+                  <h3 class="product-title"><a href="/store/client/single-product?idArt=${a.idArticle}">${a.designation }</a></h3>
                   <h4 class="product-price">${a.prix }TND</h4>
                   <div class="product-buttons">
                     <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>

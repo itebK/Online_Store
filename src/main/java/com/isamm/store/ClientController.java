@@ -28,8 +28,8 @@ public class ClientController {
 
 	/* PRODUIT */
 	@RequestMapping(value = "/single-product")
-	public String single(Locale locale, Model model) {
-
+	public String single(Locale locale, Model model, Long idArt) {
+		model.addAttribute("article", userMetier.getArticle(idArt));
 		model.addAttribute("title", "Single product");
 
 		logger.info("afficher un produit spécifique");

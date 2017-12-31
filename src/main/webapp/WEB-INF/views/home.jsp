@@ -139,7 +139,7 @@
 			<div class="grid-item">
 				<div class="product-card">
 					<div class="product-badge text-danger">${a.quantite} remain in Stock</div>
-					<a class="product-thumb" href="single-product"><c:if test="${a.idArticle!=null}">
+					<a class="product-thumb" href="/store/client/single-product"><c:if test="${a.idArticle!=null}">
              				<img src="photoArt?idArt=${a.idArticle }" alt="Product"/>
            			</c:if></a>
 					<h3 class="product-title">
