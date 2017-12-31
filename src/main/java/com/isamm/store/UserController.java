@@ -137,6 +137,13 @@ public class UserController {
 	public String wishlist(Locale locale, Model model) {
 
 		model.addAttribute("title", "Profile-wishlist");
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		model.addAttribute("favoris", userMetier.listFavoris(u.getIdUser()));
 		logger.info("afficher liste des favoris");
 		return "profile-wishlist";
 	}

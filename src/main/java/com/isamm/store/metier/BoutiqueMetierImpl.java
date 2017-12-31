@@ -178,20 +178,18 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 
 	@Override
 	public List<Article> listFavoris(Long idUser) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return dao.listFavoris(idUser);
 	}
 
 	@Override
 	public void ajouterFavoris(Long idArticle, Long idUser) {
-		// TODO Auto-generated method stub
-
+		dao.ajouterFavoris(idArticle, idUser);
 	}
 
 	@Override
 	public void supprimerFavoris(Long idArticle, Long idUser) {
-		// TODO Auto-generated method stub
-
+		dao.supprimerFavoris(idArticle, idUser);
 	}
 
 }

@@ -46,12 +46,9 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/favorisArt")
-	public String supp(Long idArt, Model model) {
-		userMetier.supprimerArticle(idArt);
-		model.addAttribute("produit", new Article());
-		model.addAttribute("produits", userMetier.listArticles());
-		model.addAttribute("categories", userMetier.listCategories());
-		return "redirect:/vendeur/add-boutique";
+	public String supp(Long idUser, Model model) {
+
+		return "redirect:/profile-wishlist";
 	}
 
 	@RequestMapping(value = "/search-product")

@@ -16,14 +16,14 @@ public class FavorisArticleUser {
 	@Embeddable
 	public static class Id implements Serializable {
 		@Column(name = "idUser")
-		private Integer idUser;
+		private Long idUser;
 		@Column(name = "idArticle")
-		private Integer idArticle;
+		private Long idArticle;
 
 		public Id() {
 		}
 
-		public Id(Integer idUser, Integer idArticle) {
+		public Id(Long idUser, Long idArticle) {
 			super();
 			this.idUser = idUser;
 			this.idArticle = idArticle;

@@ -60,48 +60,25 @@
                   </tr>
                 </thead>
                 <tbody>
+                 
+                 
+                 <c:forEach items="${favoris}" var="f">
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="photoArt?idArt=${f.idArticle }" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="/store/client/single-product">Unionbay Park</a></h4>
-                          <div class="text-lg text-medium text-muted">$43.90</div>
-                          <div>Availability:
-                            <div class="d-inline text-success">In Stock</div>
-                          </div>
+                          <h4 class="product-title"><a href="/store/client/single-product">${f.designation }</a></h4>
+                          <div class="text-lg text-medium text-muted">${f.prix } TND</div>
+                          
                         </div>
                       </div>
                     </td>
                     <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/02.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="/store/client/single-product">Daily Fabric Cap</a></h4>
-                          <div class="text-lg text-medium text-muted">$24.70</div>
-                          <div>Availability:
-                            <div class="d-inline text-warning">2 - 3 Weeks</div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/03.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="/store/client/single-product">Cole Haan Crossbody</a></h4>
-                          <div class="text-lg text-medium text-muted">$200.00</div>
-                          <div>Availability:
-                            <div class="d-inline text-success">In Stock</div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
-                  </tr>
+                  </c:forEach>
+                  
+                  
+                  
                 </tbody>
               </table>
             </div>
