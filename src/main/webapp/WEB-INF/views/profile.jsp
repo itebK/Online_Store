@@ -31,7 +31,7 @@
 					<div class="user-cover"
 						style="background-image: url(${pageContext.request.contextPath}/resources/img/account/user-cover-img.jpg);">
 						<div class="info-label" data-toggle="tooltip"
-							title="You currently have 290 Reward Points to spend">
+							title="">
 							<i class="icon-medal"></i>
 							
 							nbr cmd
@@ -64,8 +64,8 @@
             <a class="list-group-item with-badge" href="/store/profile-orders"><i class="icon-bag"></i>
             Orders<span class="badge badge-primary badge-pill">6</span></a>
             <a class="list-group-item active" href="/store/profile"><i class="icon-head"></i>
-            Profile</a><a class="list-group-item" href="/store/profile-address"><i class="icon-map"></i>
-            Addresses</a><a class="list-group-item with-badge" href="/store/profile-wishlist"><i class="icon-heart"></i>
+            Profile</a>
+<a class="list-group-item with-badge" href="/store/profile-wishlist"><i class="icon-heart"></i>
             Wishlist<span class="badge badge-primary badge-pill">3</span></a>
    			</nav>
    			

@@ -45,12 +45,6 @@ public class ClientController {
 		return "category-product";
 	}
 
-	@RequestMapping(value = "/favorisArt")
-	public String supp(Long idUser, Model model) {
-
-		return "redirect:/profile-wishlist";
-	}
-
 	@RequestMapping(value = "/search-product")
 	public String search(Locale locale, Model model) {
 

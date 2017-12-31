@@ -148,6 +148,12 @@ public class UserController {
 		return "profile-wishlist";
 	}
 
+	@RequestMapping(value = "/favorisArt")
+	public String supp(Long idUser, Model model) {
+
+		return "redirect:/profile-wishlist";
+	}
+
 	@RequestMapping(value = "/profile-orders")
 	public String order(Locale locale, Model model) {
 
