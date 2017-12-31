@@ -11,6 +11,8 @@ import com.isamm.store.entities.Article;
 import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
 import com.isamm.store.entities.Commande;
+import com.isamm.store.entities.FavorisArticleUser;
+import com.isamm.store.entities.FavorisArticleUser.Id;
 import com.isamm.store.entities.LigneCommande;
 import com.isamm.store.entities.Panier;
 import com.isamm.store.entities.User;
@@ -78,6 +80,14 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	}
 
 	@Override
+	public List<Article> getArticleParMc(String mc) {
+
+		return em.createQuery("select a from Article a where a.designation like :mc").setParameter("mc", "%" + mc + "%")
+				.getResultList();
+
+	}
+
+	@Override
 	public List<Article> listArticlesParCategorie(Long idCat) {
 		Query q = em.createQuery("select a from Article a where  a.idCategorie = :x");
 		q.setParameter("x", idCat);
@@ -105,6 +115,39 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	public void modifierArticle(Article a) {
 		em.merge(a);
 
+	}
+
+	@Override
+	public List<Article> listFavoris(Long idUser) {
+
+		return em.createQuery("SELECT f.article FROM FavorisArticleUser f WHERE f.user.idUser like :x")
+				.setParameter("x", idUser).getResultList();
+	}
+
+	@Override
+	public void ajouterFavoris(Long idArticle, Long idUser) {
+		Id id = new Id(idUser, idArticle);
+		FavorisArticleUser o = new FavorisArticleUser();
+		o.setId(id);
+		em.persist(o);
+	}
+
+	@Override
+	public void supprimerAllFavoris(Long idUser) {
+
+		/*
+		 * User u = new User(); u.setIdUser(idUser); FavorisArticleUser o = new
+		 * FavorisArticleUser(); o.setUser(u); em.remove(o);
+		 */
+		em.createQuery("DELETE FROM FavorisArticleUser f WHERE f.user.idUser like :x").setParameter("x", idUser);
+	}
+
+	@Override
+	public void supprimerFavoris(Long idArticle, Long idUser) {
+		Id id = new Id(idUser, idArticle);
+		FavorisArticleUser o = new FavorisArticleUser();
+		o.setId(id);
+		em.remove(o);
 	}
 
 	/* BOUTIQUE */

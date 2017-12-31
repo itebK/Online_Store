@@ -1,5 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <jsp:include page="header.jsp" />
 
 
@@ -28,23 +31,42 @@
       <div class="container padding-bottom-3x mb-2">
         <div class="row">
           <div class="col-lg-4">
-            <aside class="user-info-wrapper">
-              <div class="user-cover" style="background-image: url(${pageContext.request.contextPath}/resources/img/account/user-cover-img.jpg);">
-                <div class="info-label" data-toggle="tooltip" title="You currently have 290 Reward Points to spend"><i class="icon-medal"></i>290 points</div>
-              </div>
-              <div class="user-info">
-                <div class="user-avatar"><a class="edit-avatar" href="#"></a><img src="${pageContext.request.contextPath}/resources/img/account/user-ava.jpg" alt="User"></div>
+               <aside class="user-info-wrapper">
+					<div class="user-cover"
+						style="background-image: url(${pageContext.request.contextPath}/resources/img/account/user-cover-img.jpg);">
+						<div class="info-label" data-toggle="tooltip"
+							title="">
+							<i class="icon-medal"></i>
+							nbr cmd
+						</div>
+					</div>
+					<div class="user-info">
+                <div class="user-avatar">
+               <f:form modelAttribute="user" method="post" id="form_file" enctype="multipart/form-data" action="saveImgProfile">
+                <input  onchange="document.getElementById('form_file').submit()" type="file" class="edit-avatar" name="file"/>
+                
+                </f:form>
+                <img src="photoProfile?idUser=${user.idUser}" width="auto" alt="User"></div>
                 <div class="user-data">
-                  <h4>Daniel Adams</h4><span>Joined February 06, 2017</span>
+                  <h4>${user.getUsername() }</h4>
+                  <span>
+                  	<sec:authorize access="hasRole('VENDEUR_ROLE')">
+						Vendeur
+					</sec:authorize>
+					<sec:authorize access="!hasRole('VENDEUR_ROLE')">
+						Client
+					</sec:authorize>
+                  </span>
                 </div>
               </div>
             </aside>
+        
                       <nav class="list-group">
             <a class="list-group-item with-badge" href="/store/profile-orders"><i class="icon-bag"></i>
             Orders<span class="badge badge-primary badge-pill">6</span></a>
             <a class="list-group-item" href="/store/profile"><i class="icon-head"></i>
-            Profile</a><a class="list-group-item" href="/store/profile-address"><i class="icon-map"></i>
-            Addresses</a><a class="list-group-item with-badge active" href="/store/profile-wishlist"><i class="icon-heart"></i>
+            Profile</a>
+<a class="list-group-item with-badge active" href="/store/profile-wishlist"><i class="icon-heart"></i>
             Wishlist<span class="badge badge-primary badge-pill">3</span></a>
    			</nav>
           </div>
@@ -56,52 +78,29 @@
                 <thead>
                   <tr>
                     <th>Product Name</th>
-                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Wishlist</a></th>
+                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="delete-all-wishlist">Clear Wishlist</a></th>
                   </tr>
                 </thead>
                 <tbody>
+                 
+                 
+                 <c:forEach items="${favoris}" var="f">
                   <tr>
                     <td>
-                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/01.jpg" alt="Product"></a>
+                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="photoArt?idArt=${f.idArticle }" alt="Product"></a>
                         <div class="product-info">
-                          <h4 class="product-title"><a href="/store/client/single-product">Unionbay Park</a></h4>
-                          <div class="text-lg text-medium text-muted">$43.90</div>
-                          <div>Availability:
-                            <div class="d-inline text-success">In Stock</div>
-                          </div>
+                          <h4 class="product-title"><a href="/store/client/single-product">${f.designation }</a></h4>
+                          <div class="text-lg text-medium text-muted">${f.prix } TND</div>
+                          
                         </div>
                       </div>
                     </td>
                     <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/02.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="/store/client/single-product">Daily Fabric Cap</a></h4>
-                          <div class="text-lg text-medium text-muted">$24.70</div>
-                          <div>Availability:
-                            <div class="d-inline text-warning">2 - 3 Weeks</div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="product-item"><a class="product-thumb" href="/store/client/single-product"><img src="${pageContext.request.contextPath}/resources/img/shop/cart/03.jpg" alt="Product"></a>
-                        <div class="product-info">
-                          <h4 class="product-title"><a href="/store/client/single-product">Cole Haan Crossbody</a></h4>
-                          <div class="text-lg text-medium text-muted">$200.00</div>
-                          <div>Availability:
-                            <div class="d-inline text-success">In Stock</div>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
-                  </tr>
+                  </c:forEach>
+                  
+                  
+                  
                 </tbody>
               </table>
             </div>

@@ -137,9 +137,33 @@ public class UserController {
 	public String wishlist(Locale locale, Model model) {
 
 		model.addAttribute("title", "Profile-wishlist");
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		model.addAttribute("favoris", userMetier.listFavoris(u.getIdUser()));
 		logger.info("afficher liste des favoris");
 		return "profile-wishlist";
 	}
+
+	/********************************************
+	 ********** VERIFY **************************
+	 ********************************************/
+	@RequestMapping(value = "/delete-all-wishlist")
+	public String supp(Long idUser, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		userMetier.supprimerAllFavoris(u.getIdUser());
+
+		return "redirect:/profile-wishlist";
+	}
+
+	/********* delete single wishlist ************/
+	/************** add wishlist *****************/
 
 	@RequestMapping(value = "/profile-orders")
 	public String order(Locale locale, Model model) {
@@ -186,6 +210,15 @@ public class UserController {
 		}
 
 		return "redirect:/profile";
+
+	}
+
+	/* SEARCH ARTICLE */
+	@RequestMapping(value = "/searchParMc")
+	public String searchParMc(String site_search, Model model) {
+		model.addAttribute("articles", userMetier.getArticleParMc(site_search));
+		model.addAttribute("categories", userMetier.listCategories());
+		return "product-by-category";
 
 	}
 

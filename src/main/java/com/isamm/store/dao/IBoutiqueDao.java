@@ -40,6 +40,16 @@ public interface IBoutiqueDao {
 
 	public void modifierArticle(Article a);
 
+	public List<Article> listFavoris(Long idUser);
+
+	public void ajouterFavoris(Long idArticle, Long idUser);
+
+	public void supprimerFavoris(Long idArticle, Long idUser);
+
+	public void supprimerAllFavoris(Long idUser);
+
+	public List<Article> getArticleParMc(String mc);
+
 	/* BOUTIQUE */
 	public Long ajouterBoutique(Boutique b, Long IdVend);
 
