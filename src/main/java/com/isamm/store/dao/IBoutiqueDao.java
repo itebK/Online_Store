@@ -46,6 +46,8 @@ public interface IBoutiqueDao {
 
 	public void supprimerFavoris(Long idArticle, Long idUser);
 
+	public void supprimerAllFavoris(Long idUser);
+
 	public List<Article> getArticleParMc(String mc);
 
 	/* BOUTIQUE */

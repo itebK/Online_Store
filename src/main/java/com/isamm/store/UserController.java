@@ -148,11 +148,22 @@ public class UserController {
 		return "profile-wishlist";
 	}
 
-	@RequestMapping(value = "/favorisArt")
+	/********************************************
+	 ********** VERIFY **************************
+	 ********************************************/
+	@RequestMapping(value = "/delete-all-wishlist")
 	public String supp(Long idUser, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		userMetier.supprimerAllFavoris(u.getIdUser());
 
 		return "redirect:/profile-wishlist";
 	}
+
+	/********* delete single wishlist ************/
+	/************** add wishlist *****************/
 
 	@RequestMapping(value = "/profile-orders")
 	public String order(Locale locale, Model model) {

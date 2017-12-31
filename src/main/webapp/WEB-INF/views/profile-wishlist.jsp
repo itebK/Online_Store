@@ -37,10 +37,7 @@
 						<div class="info-label" data-toggle="tooltip"
 							title="">
 							<i class="icon-medal"></i>
-							
 							nbr cmd
-							
-							
 						</div>
 					</div>
 					<div class="user-info">
@@ -81,7 +78,7 @@
                 <thead>
                   <tr>
                     <th>Product Name</th>
-                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Clear Wishlist</a></th>
+                    <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="delete-all-wishlist">Clear Wishlist</a></th>
                   </tr>
                 </thead>
                 <tbody>

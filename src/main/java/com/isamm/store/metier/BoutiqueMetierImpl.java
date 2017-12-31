@@ -103,6 +103,28 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 		return dao.getArticleParIdBoutique(idBout);
 	}
 
+	@Override
+	public List<Article> listFavoris(Long idUser) {
+
+		return dao.listFavoris(idUser);
+	}
+
+	@Override
+	public void ajouterFavoris(Long idArticle, Long idUser) {
+		dao.ajouterFavoris(idArticle, idUser);
+	}
+
+	@Override
+	public void supprimerFavoris(Long idArticle, Long idUser) {
+		dao.supprimerFavoris(idArticle, idUser);
+	}
+
+	@Override
+	public void supprimerAllFavoris(Long idUser) {
+		dao.supprimerAllFavoris(idUser);
+
+	}
+
 	/* BOUTIQUE */
 
 	@Override
@@ -174,22 +196,6 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 	@Override
 	public User getUserParNom(String username) {
 		return dao.getUserParNom(username);
-	}
-
-	@Override
-	public List<Article> listFavoris(Long idUser) {
-
-		return dao.listFavoris(idUser);
-	}
-
-	@Override
-	public void ajouterFavoris(Long idArticle, Long idUser) {
-		dao.ajouterFavoris(idArticle, idUser);
-	}
-
-	@Override
-	public void supprimerFavoris(Long idArticle, Long idUser) {
-		dao.supprimerFavoris(idArticle, idUser);
 	}
 
 }
