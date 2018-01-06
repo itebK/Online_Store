@@ -32,6 +32,8 @@ public interface IBoutiqueDao {
 
 	public List<Article> listArticlesParCategorie(Long idCat);
 
+	public List<Article> listArticlesParPrix(double min, double max);
+
 	public List<Article> getArticleParIdBoutique(Long idBout);
 
 	public Article getArticle(Long idArt);

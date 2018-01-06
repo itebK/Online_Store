@@ -26,7 +26,7 @@ public class ClientController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
-	/* PRODUIT */
+	/* ARTICLE */
 	@RequestMapping(value = "/single-product")
 	public String single(Locale locale, Model model, Long idArt) {
 		model.addAttribute("article", userMetier.getArticle(idArt));
@@ -45,14 +45,14 @@ public class ClientController {
 		return "category-product";
 	}
 
-	@RequestMapping(value = "/search-product")
-	public String search(Locale locale, Model model) {
-
-		logger.info("chercher produit");
-
-		model.addAttribute("title", "Search product");
-		return "search-product";
-	}
+	/*
+	 * @RequestMapping(value = "/search-product") public String search(Locale
+	 * locale, Model model) {
+	 * 
+	 * logger.info("chercher produit");
+	 * 
+	 * model.addAttribute("title", "Search product"); return "search-product"; }
+	 */
 
 	@RequestMapping(value = "/product-by-category")
 	public String articleByCategorie(Locale locale, Model model, long idCat) {

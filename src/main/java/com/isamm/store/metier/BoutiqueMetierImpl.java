@@ -94,6 +94,11 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 	}
 
 	@Override
+	public List<Article> listArticlesParPrix(double min, double max) {
+		return dao.listArticlesParPrix(min, max);
+	}
+
+	@Override
 	public Article getArticle(Long idArt) {
 		return dao.getArticle(idArt);
 	}

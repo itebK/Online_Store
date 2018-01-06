@@ -222,6 +222,17 @@ public class UserController {
 
 	}
 
+	@RequestMapping(value = "/searchParPrix")
+	public String searchParPrix(Locale locale, Model model, double min, double max) {
+		model.addAttribute("min", min);
+		model.addAttribute("max", max);
+		model.addAttribute("articles", userMetier.listArticlesParPrix(min, max));
+		model.addAttribute("categories", userMetier.listCategories());
+		logger.info("prix entre" + min + "$ et " + max + "$");
+		return "product-by-category";
+
+	}
+
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied(Principal user) {
 

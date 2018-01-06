@@ -73,7 +73,7 @@
               <!-- Widget Price Range-->
               <section class="widget widget-categories">
                 <h3 class="widget-title">Price Range</h3>
-                <form class="price-range-slider" method="post" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
+                <form class="price-range-slider" method="post" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1" action="/store/searchParPrix">
                   <div class="ui-range-slider"></div>
                   <footer class="ui-range-slider-footer">
                     <div class="column">
@@ -82,10 +82,12 @@
                     <div class="column">
                       <div class="ui-range-values">
                         <div class="ui-range-value-min">$<span></span>
-                          <input type="hidden">
+                       
+                          <input type="hidden" name="min" value=${min }>
                         </div>&nbsp;-&nbsp;
-                        <div class="ui-range-value-max">$<span></span>
-                          <input type="hidden">
+                        <div class="ui-range-value-max" >$<span></span>
+                      
+                          <input type="hidden" name="max" value=${max }>
                         </div>
                       </div>
                     </div>

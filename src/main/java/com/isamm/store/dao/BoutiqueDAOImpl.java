@@ -95,6 +95,14 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	}
 
 	@Override
+	public List<Article> listArticlesParPrix(double min, double max) {
+		Query q = em.createQuery("select a from Article a where  a.prix BETWEEN :min AND :max");
+		q.setParameter("min", min);
+		q.setParameter("max", max);
+		return q.getResultList();
+	}
+
+	@Override
 	public Article getArticle(Long idArt) {
 		return em.find(Article.class, idArt);
 	}

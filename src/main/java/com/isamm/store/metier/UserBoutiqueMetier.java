@@ -32,6 +32,8 @@ public interface UserBoutiqueMetier {
 
 	public List<Article> listArticlesParCategorie(Long idCat);
 
+	public List<Article> listArticlesParPrix(double min, double max);
+
 	public Article getArticle(Long idArt);
 
 	public List<Article> getArticleParIdBoutique(Long idBout);
