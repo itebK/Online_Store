@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.isamm.store.entities.Article;
 import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
+import com.isamm.store.entities.User;
 import com.isamm.store.metier.UserBoutiqueMetier;
 
 @Controller
@@ -62,6 +63,14 @@ public class HomeController {
 	@ResponseBody
 	public byte[] photCat(Long idCat) throws IOException {
 		Categorie a = userMetier.getCategorie(idCat);
+		return IOUtils.toByteArray(new ByteArrayInputStream(a.getPhoto()));
+	}
+
+	/* PHOTO PROFILE */
+	@RequestMapping(value = "photoProfile", produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] photoProfile(Long idUser) throws IOException {
+		User a = userMetier.getUser(idUser);
 		return IOUtils.toByteArray(new ByteArrayInputStream(a.getPhoto()));
 	}
 

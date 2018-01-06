@@ -70,7 +70,7 @@
 															class="icon-star filled"></i><i class="icon-star"></i>
 													</div>
 													<a class="product-thumb"
-														href="/store/client/single-product"> <c:if
+														href="/store/client/single-product?idArt=${a.idArticle }"> <c:if
 															test="${a.idArticle!=null}">
 															<img src="photoArt?idArt=${a.idArticle }" alt="Product" />
 														</c:if></a>

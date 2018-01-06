@@ -48,7 +48,8 @@
 	 
 	 <s:http auto-config="true" use-expressions="true"> 
 	 <s:intercept-url pattern="/vendeur/**" access="hasRole('VENDEUR_ROLE')"/>
-	 <s:intercept-url pattern="/client/**" access="hasRole('CLIENT_ROLE')"/> 
+	 <s:intercept-url pattern="/client/**" access="hasRole('CLIENT_ROLE')"/>
+	 <s:intercept-url pattern="/login/**" access="isAnonymous()"/> 
 	 <s:form-login login-page="/login" default-target-url="/profile" authentication-failure-url="/login" />
 	 <s:logout logout-success-url="/logout" /> 
 	 </s:http> 
