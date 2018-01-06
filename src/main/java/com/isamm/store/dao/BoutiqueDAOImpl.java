@@ -89,7 +89,7 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 
 	@Override
 	public List<Article> listArticlesParCategorie(Long idCat) {
-		Query q = em.createQuery("select a from Article a where  a.idCategorie = :x");
+		Query q = em.createQuery("select a from Article a where  a.categorie.idCategorie = :x");
 		q.setParameter("x", idCat);
 		return q.getResultList();
 	}

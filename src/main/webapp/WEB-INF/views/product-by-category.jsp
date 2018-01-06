@@ -65,7 +65,7 @@
                 <h3 class="widget-title">Shop Categories</h3>
                 <ul>
                 <c:forEach items="${categories}" var="cat">
-                  <li class="has-children expanded"><a href="#">${cat.nomCategorie}</a><span>(1138)</span>
+                  <li class="has-children expanded"><a href="/store/client/product-by-category?idCat=${cat.idCategorie }">${cat.nomCategorie}</a><span></span>
                   </li>
          		</c:forEach>        
                 </ul>

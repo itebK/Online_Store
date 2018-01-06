@@ -55,12 +55,25 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/product-by-category")
-	public String byCategory(Locale locale, Model model) {
-		model.addAttribute("articles", userMetier.listArticles());
+	public String articleByCategorie(Locale locale, Model model, long idCat) {
+
+		model.addAttribute("articles", userMetier.listArticlesParCategorie(idCat));
 		model.addAttribute("categories", userMetier.listCategories());
 		model.addAttribute("title", "Product by category");
 
 		logger.info("afficher produit d'une categorie");
+
+		return "product-by-category";
+	}
+
+	@RequestMapping(value = "/products")
+	public String articles(Locale locale, Model model) {
+
+		model.addAttribute("articles", userMetier.listArticles());
+		model.addAttribute("categories", userMetier.listCategories());
+		model.addAttribute("title", "Products");
+
+		logger.info("afficher articles");
 
 		return "product-by-category";
 	}

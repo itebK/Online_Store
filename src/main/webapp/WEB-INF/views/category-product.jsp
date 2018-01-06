@@ -22,7 +22,7 @@
 	<div class="container padding-bottom-2x mb-2">
 		<div class="row">
 			<!-- Categories-->
-			<div class="col-xl-9 col-lg-8 order-lg-2">
+			<div class="col-xl-12 col-lg-8 order-lg-2">
 				<!-- Promo banner-->
 				<div
 					class="alert alert-image-bg alert-dismissible fade show text-center mb-4"
@@ -39,9 +39,9 @@
 				<div class="row">
 					<!-- Categories-->
 					<c:forEach items="${categories}" var="cat">
-					<div class="col-sm-6">
+					<div class="col-sm-4">
 						<div class="card mb-30">
-							<a class="card-img-tiles" href="/store/client/product-by-category">
+							<a class="card-img-tiles" href="/store/client/product-by-category?idCat=${cat.idCategorie }">
 								<div class="inner">
 							<div class="main-img">
 							
@@ -55,9 +55,9 @@
 							</a>
 							<div class="card-body text-center">
 								<h4 class="card-title">${cat.nomCategorie}</h4>
-								<p class="text-muted">Starting from $79.99</p>
+								
 								<a class="btn btn-outline-primary btn-sm"
-									href="/store/client/product-by-category">View Products</a>
+									href="/store/client/product-by-category?idCat=${cat.idCategorie }">View Products</a>
 							</div>
 						</div>
 					</div>
@@ -65,21 +65,8 @@
 
 				</div>
 			</div>
-			<!-- Sidebar          -->
-			<div class="col-xl-3 col-lg-4 order-lg-1">
-				<aside class="sidebar">
-					<div class="padding-top-2x hidden-lg-up"></div>
-					<section class="widget widget-categories">
-						<h3 class="widget-title">Stores</h3>
-						<ul>
-							  <c:forEach items="${categories}" var="cat">
-                  					<li class="has-children expanded"><a href="#">${cat.nomCategorie}</a><span>(1138)</span>
-                  					</li>
-         					</c:forEach> 
-						</ul>
-					</section>
-				</aside>
-			</div>
+	
+	
 		</div>
 	</div>
 

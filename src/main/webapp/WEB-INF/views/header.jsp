@@ -70,7 +70,7 @@
 					</span></li>
 				</sec:authorize>
 				<li class="has-children"><span> <a
-						href="/store/client/product-by-category">Articles</a>
+						href="/store/client/products">Articles</a>
 				</span></li>
 				<li class="has-children"><span> <a
 						href="/store/client/category-product">Categories</a>
