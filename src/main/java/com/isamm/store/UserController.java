@@ -164,7 +164,7 @@ public class UserController {
 
 		userMetier.supprimerFavoris(idArt, u.getIdUser());
 
-		return "profile-wishlist";
+		return "redirect:/profile-wishlist";
 	}
 
 	/********************************************
