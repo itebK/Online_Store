@@ -144,6 +144,29 @@ public class UserController {
 		return "profile-wishlist";
 	}
 
+	@RequestMapping(value = "/add-to-wishlist")
+	public String addWishlist(Long idUser, Model model, Long idArt) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		userMetier.ajouterFavoris(idArt, u.getIdUser());
+
+		return "redirect:/profile-wishlist";
+	}
+
+	@RequestMapping(value = "/delete-from-wishlist")
+	public String deleteWishlist(Long idUser, Model model, Long idArt) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+		System.out.println(idArt + "/user :" + u.getIdUser());
+
+		userMetier.supprimerFavoris(idArt, u.getIdUser());
+
+		return "profile-wishlist";
+	}
+
 	/********************************************
 	 ********** VERIFY **************************
 	 ********************************************/

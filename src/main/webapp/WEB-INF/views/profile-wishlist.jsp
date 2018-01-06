@@ -95,7 +95,7 @@
                         </div>
                       </div>
                     </td>
-                    <td class="text-center"><a class="remove-from-cart" href="#" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
+                    <td class="text-center"><a class="remove-from-cart" href="/store/delete-from-wishlist?idArt=${f.idArticle}" data-toggle="tooltip" title="Remove item"><i class="icon-cross"></i></a></td>
                   </tr>
                   </c:forEach>
                   

@@ -152,10 +152,17 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 
 	@Override
 	public void supprimerFavoris(Long idArticle, Long idUser) {
+
 		Id id = new Id(idUser, idArticle);
 		FavorisArticleUser o = new FavorisArticleUser();
 		o.setId(id);
 		em.remove(o);
+
+		/*
+		 * Query q = em.
+		 * createQuery("DELETE f FROM FavorisArticleUser f WHERE f.idUser like :x AND f.idArticle like :y"
+		 * ); q.setParameter("x", idUser); q.setParameter("y", idArticle);
+		 */
 	}
 
 	/* BOUTIQUE */
