@@ -81,4 +81,13 @@ public interface IBoutiqueDao {
 
 	public User getUserParNom(String username);
 
+	/* PANIER */
+	public List<Article> panierArticleParUser(Long idUser);
+
+	public void ajouterArticlePanier(Long idArticle, Long idUser);
+
+	public void supprimerArticlePanier(Long idArticle, Long idUser);
+
+	public void viderPanier(Long idUser);
+
 }

@@ -15,6 +15,8 @@ import com.isamm.store.entities.FavorisArticleUser;
 import com.isamm.store.entities.FavorisArticleUser.Id;
 import com.isamm.store.entities.LigneCommande;
 import com.isamm.store.entities.Panier;
+import com.isamm.store.entities.PanierArticleUser;
+import com.isamm.store.entities.PanierArticleUser.IdP;
 import com.isamm.store.entities.User;
 
 public class BoutiqueDAOImpl implements IBoutiqueDao {
@@ -242,6 +244,37 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 	public User getUserParNom(String username) {
 		return (User) em.createQuery("SELECT u FROM User u WHERE u.username = :x").setParameter("x", username)
 				.getSingleResult();
+
+	}
+	/* PANIER */
+
+	@Override
+	public List<Article> panierArticleParUser(Long idUser) {
+		return em.createQuery("SELECT p.article FROM PanierArticleUser p WHERE p.user.idUser like :x")
+				.setParameter("x", idUser).getResultList();
+	}
+
+	@Override
+	public void ajouterArticlePanier(Long idArticle, Long idUser) {
+		IdP id = new IdP(idUser, idArticle);
+		PanierArticleUser p = new PanierArticleUser();
+		p.setIdP(id);
+		em.persist(p);
+
+	}
+
+	@Override
+	public void supprimerArticlePanier(Long idArticle, Long idUser) {
+		IdP id = new IdP(idUser, idArticle);
+		PanierArticleUser p = em.find(PanierArticleUser.class, id);
+		em.remove(p);
+
+	}
+
+	@Override
+	public void viderPanier(Long idUser) {
+		em.createQuery("DELETE FROM PanierArticleUser p WHERE p.user.idUser like :x").setParameter("x", idUser)
+				.executeUpdate();
 
 	}
 

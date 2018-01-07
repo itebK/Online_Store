@@ -36,121 +36,59 @@
 					<tr>
 						<th>Product Name</th>
 						<th class="text-center">Quantity</th>
-						<th class="text-center">Subtotal</th>
-						<th class="text-center">Discount</th>
+						<th class="text-center">Price</th>
 						<th class="text-center"><a
-							class="btn btn-sm btn-outline-danger" href="#">Clear Cart</a></th>
+							class="btn btn-sm btn-outline-danger" href="/store/delete-all-cart">Clear Cart</a></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>
-							<div class="product-item">
-								<a class="product-thumb" href="/store/client/single-product"><img
-									src="${pageContext.request.contextPath}/resources/img/shop/cart/01.jpg"
-									alt="Product"></a>
-								<div class="product-info">
-									<h4 class="product-title">
-										<a href="/store/client/single-product">Unionbay Park</a>
-									</h4>
-									<span><em>Size:</em> 10.5</span><span><em>Color:</em>
-										Dark Blue</span>
+				<c:set var="total" value="${0}"/>
+					<c:forEach items="${panier}" var="p">
+						<tr>
+							<td>
+								<div class="product-item">
+									<a class="product-thumb" href="/store/client/single-product"><img
+										src="photoArticle?idArt=${p.idArticle}"
+										alt="Product"></a>
+									<div class="product-info">
+										<h4 class="product-title">
+											<a href="/store/client/single-product?idArt=${ p.idArticle}">${p.designation}</a>
+										</h4>
+										<span><em>Description:</em> ${ p.description}</span>
+									</div>
 								</div>
-							</div>
-						</td>
-						<td class="text-center">
-							<div class="count-input">
-								<select class="form-control">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-						</td>
-						<td class="text-center text-lg text-medium">$43.90</td>
-						<td class="text-center text-lg text-medium">$18.00</td>
-						<td class="text-center"><a class="remove-from-cart" href="#"
-							data-toggle="tooltip" title="Remove item"><i
-								class="icon-cross"></i></a></td>
-					</tr>
-					<tr>
-						<td>
-							<div class="product-item">
-								<a class="product-thumb" href="/store/client/single-product"><img
-									src="${pageContext.request.contextPath}/resources/img/shop/cart/02.jpg"
-									alt="Product"></a>
-								<div class="product-info">
-									<h4 class="product-title">
-										<a href="/store/client/single-product">Daily Fabric Cap</a>
-									</h4>
-									<span><em>Size:</em> XL</span><span><em>Color:</em>
-										Black</span>
+							</td>
+							<td class="text-center">
+								<div class="count-input">
+									<select class="form-control">
+								
+										<c:forEach var="i" begin="1" end="${p.quantite}" step="1">
+											<option><c:out value="${ i }" /></option>
+												
+										</c:forEach>
+									</select>
 								</div>
-							</div>
-						</td>
-						<td class="text-center">
-							<div class="count-input">
-								<select class="form-control">
-									<option>1</option>
-									<option selected>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-						</td>
-						<td class="text-center text-lg text-medium">$24.89</td>
-						<td class="text-center">&mdash;</td>
-						<td class="text-center"><a class="remove-from-cart" href="#"
-							data-toggle="tooltip" title="Remove item"><i
-								class="icon-cross"></i></a></td>
-					</tr>
-					<tr>
-						<td>
-							<div class="product-item">
-								<a class="product-thumb" href="/store/client/single-product"><img
-									src="${pageContext.request.contextPath}/resources/img/shop/cart/03.jpg"
-									alt="Product"></a>
-								<div class="product-info">
-									<h4 class="product-title">
-										<a href="/store/client/single-product">Cole Haan Crossbody</a>
-									</h4>
-									<span><em>Size:</em> -</span><span><em>Color:</em>
-										Turquoise</span>
-								</div>
-							</div>
-						</td>
-						<td class="text-center">
-							<div class="count-input">
-								<select class="form-control">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-								</select>
-							</div>
-						</td>
-						<td class="text-center text-lg text-medium">$200.00</td>
-						<td class="text-center">&mdash;</td>
-						<td class="text-center"><a class="remove-from-cart" href="#"
-							data-toggle="tooltip" title="Remove item"><i
-								class="icon-cross"></i></a></td>
-					</tr>
+							</td>
+							<td class="text-center text-lg text-medium">${ p.prix}DT</td>
+							<c:set var="total" value="${total +p.prix }" />
+							<td class="text-center"><a class="remove-from-cart" href="/store/delete-from-cart?idArt=${p.idArticle }"
+								data-toggle="tooltip" title="Remove item"><i
+									class="icon-cross"></i></a></td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<div class="shopping-cart-footer">
 			<div class="column"></div>
 			<div class="column text-lg">
-				Subtotal: <span class="text-medium">$289.68</span>
+				Subtotal: <span class="text-medium">${total}</span>
 			</div>
 		</div>
 		<div class="shopping-cart-footer">
 			<div class="column">
-				<a class="btn btn-outline-secondary" href="/store/client/category-product"><i
+				<a class="btn btn-outline-secondary"
+					href="/store/client/category-product"><i
 					class="icon-arrow-left"></i>&nbsp;Back to Shopping</a>
 			</div>
 			<div class="column">

@@ -1,6 +1,7 @@
 package com.isamm.store;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -12,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -23,6 +26,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -128,6 +132,7 @@ public class UserController {
 
 		return "profile";
 	}
+	/* FAVORIS */
 
 	@RequestMapping(value = "/profile-wishlist")
 	public String wishlist(Locale locale, Model model) {
@@ -167,9 +172,6 @@ public class UserController {
 		return "redirect:/profile-wishlist";
 	}
 
-	/********************************************
-	 ********** VERIFY **************************
-	 ********************************************/
 	@RequestMapping(value = "/delete-all-wishlist")
 	public String supp(Long idUser, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -181,8 +183,59 @@ public class UserController {
 		return "redirect:/profile-wishlist";
 	}
 
-	/********* delete single wishlist ************/
-	/************** add wishlist *****************/
+	/************************************************************/
+	/* PANIER */
+	@RequestMapping(value = "/profile-cart")
+	public String cart(Locale locale, Model model) {
+
+		model.addAttribute("title", "Profile-cart");
+
+		logger.info("afficher liste des produits dans le panier de l'utilisateur connecter");
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		model.addAttribute("panier", userMetier.panierArticleParUser(u.getIdUser()));
+
+		return "profile-cart";
+	}
+
+	@RequestMapping(value = "/add-to-cart")
+	public String addToCart(Long idUser, Model model, Long idArt) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		userMetier.ajouterArticlePanier(idArt, u.getIdUser());
+
+		return "redirect:/profile-cart";
+	}
+
+	@RequestMapping(value = "/delete-from-cart")
+	public String deleteFromCart(Long idUser, Model model, Long idArt) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		userMetier.supprimerArticlePanier(idArt, u.getIdUser());
+
+		return "redirect:/profile-cart";
+	}
+
+	@RequestMapping(value = "/delete-all-cart")
+	public String viderPanier(Long idUser, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String nameVendeur = auth.getName();
+		User u = userMetier.getUserParNom(nameVendeur);
+
+		userMetier.viderPanier(u.getIdUser());
+
+		return "redirect:/profile-cart";
+	}
+
+	/************************************************************/
 
 	@RequestMapping(value = "/profile-orders")
 	public String order(Locale locale, Model model) {
@@ -200,16 +253,6 @@ public class UserController {
 		model.addAttribute("title", "Profile-address");
 		logger.info("afficher adresse de l'utilisateur connecter");
 		return "profile-address";
-	}
-
-	@RequestMapping(value = "/profile-cart")
-	public String cart(Locale locale, Model model) {
-
-		model.addAttribute("title", "Profile-cart");
-
-		logger.info("affiicher liste des produits dans le panier de l'utilisateur connecter");
-
-		return "profile-cart";
 	}
 
 	/* AJOUTER ARTICLE */
@@ -266,6 +309,14 @@ public class UserController {
 		model.setViewName("403");
 		return model;
 
+	}
+
+	/* PHOTO ARTICLE */
+	@RequestMapping(value = "photoArticle", produces = MediaType.IMAGE_JPEG_VALUE)
+	@ResponseBody
+	public byte[] photoArticle(Long idArt) throws IOException {
+		Article a = userMetier.getArticle(idArt);
+		return IOUtils.toByteArray(new ByteArrayInputStream(a.getPhoto()));
 	}
 
 }

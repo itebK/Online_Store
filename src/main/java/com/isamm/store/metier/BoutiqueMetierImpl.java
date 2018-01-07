@@ -203,4 +203,29 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 		return dao.getUserParNom(username);
 	}
 
+	/* PANIER */
+
+	@Override
+	public List<Article> panierArticleParUser(Long idUser) {
+		return dao.panierArticleParUser(idUser);
+	}
+
+	@Override
+	public void ajouterArticlePanier(Long idArticle, Long idUser) {
+		dao.ajouterArticlePanier(idArticle, idUser);
+
+	}
+
+	@Override
+	public void supprimerArticlePanier(Long idArticle, Long idUser) {
+		dao.supprimerArticlePanier(idArticle, idUser);
+
+	}
+
+	@Override
+	public void viderPanier(Long idUser) {
+		dao.viderPanier(idUser);
+
+	}
+
 }

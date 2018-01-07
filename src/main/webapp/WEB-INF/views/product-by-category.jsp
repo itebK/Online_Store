@@ -45,7 +45,7 @@
                   <h4 class="product-price">${a.prix }TND</h4>
                   <div class="product-buttons">
                     <a class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist" href="/store/add-to-wishlist?idArt=${a.idArticle }"><i class="icon-heart"></i></a>
-                    <a class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</a>
+                    <a class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!" href="/store/add-to-cart?idArt=${a.idArticle }">Add to Cart</a>
                   </div>
                 </div>
               </div>
