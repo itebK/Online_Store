@@ -103,7 +103,7 @@
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="reg-pass-confirm">Confirm Password</label>
-                  <input class="form-control" type="password" id="reg-pass-confirm" required="required">
+                  <input class="form-control" type="password" id="reg-pass-confirm" required="required" name="repassword">
                   
                 </div>
               </div>

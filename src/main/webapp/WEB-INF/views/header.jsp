@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from themes.rokaux.com/unishop/v1.4/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 24 Dec 2017 19:45:56 GMT -->
+
 <head>
 <meta charset="utf-8">
 <title>${title}</title>
@@ -66,7 +66,8 @@
 				<li class="has-children"><span> <a href="/store/home">Home</a>
 				</span></li>
 				<sec:authorize access="hasRole('VENDEUR_ROLE')">
-					<li class="has-children"><span> <a href="/store/vendeur/add-boutique">My Shop</a>
+					<li class="has-children"><span> <a
+							href="/store/vendeur/add-boutique">My Shop</a>
 					</span></li>
 				</sec:authorize>
 				<li class="has-children"><span> <a
@@ -96,8 +97,8 @@
 		</a>
 		<nav class="offcanvas-menu">
 			<ul class="menu">
-				<li class="has-children active"><span> <a href="/store/home">
-							<span>Home</span>
+				<li class="has-children active"><span> <a
+						href="/store/home"> <span>Home</span>
 					</a>
 				</span></li>
 
@@ -151,19 +152,22 @@
 				<!-- Site Logo-->
 				<a class="site-logo" href="/store/home"><img
 					src="${pageContext.request.contextPath}/resources/img/logo/logo.png"
-					alt="Unishop"></a>
+					alt="Online Store"></a>
 			</div>
 		</div>
 		<!-- Main Navigation-->
-<sec:authorize access="hasRole('VENDEUR_ROLE')">
-		<nav class="site-menu">
-			<ul>
-				<li><a href="/store/vendeur/add-boutique"><span>My Shop</span> </a></li>
-				<li><a href="/store/vendeur/add-category"><span>Add Category</span></a></li>
-				<li><a href="/store/vendeur/add-article"><span>Add Article</span></a></li>
-			</ul>
-		</nav>
-</sec:authorize>
+		<sec:authorize access="hasRole('VENDEUR_ROLE')">
+			<nav class="site-menu">
+				<ul>
+					<li><a href="/store/vendeur/add-boutique"><span>My
+								Shop</span> </a></li>
+					<li><a href="/store/vendeur/add-category"><span>Add
+								Category</span></a></li>
+					<li><a href="/store/vendeur/add-article"><span>Add
+								Article</span></a></li>
+				</ul>
+			</nav>
+		</sec:authorize>
 		<!-- Toolbar-->
 		<div class="toolbar">
 			<div class="inner">
@@ -174,39 +178,34 @@
 					<div class="account">
 
 
-					<sec:authorize access="isAuthenticated()">
-						<a href="/store/profile"></a>
-					</sec:authorize>
-					<sec:authorize access="isAnonymous()">
-					<a href="/store/login"></a>
-					</sec:authorize>
+						<sec:authorize access="isAuthenticated()">
+							<a href="/store/profile"></a>
+						</sec:authorize>
+						<sec:authorize access="isAnonymous()">
+							<a href="/store/login"></a>
+						</sec:authorize>
 						<i class="icon-head"></i>
 						<ul class="toolbar-dropdown">
 							<sec:authorize access="hasRole('CLIENT_ROLE')">
 								<li class="sub-menu-user">
-									<div class="user-ava">
-										<img
-											src="${pageContext.request.contextPath}/resources/img/account/user-ava-sm.jpg"
-											alt="">
-									</div>
+									
 									<div class="user-info">
 										<h6 class="user-name">
 											<sec:authorize access="isAuthenticated()">
 												<sec:authentication property="principal.username" />
 											</sec:authorize>
 										</h6>
-										<span class="text-xs text-muted"> 
-										<sec:authorize access="hasRole('VENDEUR_ROLE')">
+										<span class="text-xs text-muted"> <sec:authorize
+												access="hasRole('VENDEUR_ROLE')">
 										Vendeur
-										</sec:authorize>
-										<sec:authorize access="!hasRole('VENDEUR_ROLE')">
+										</sec:authorize> <sec:authorize access="!hasRole('VENDEUR_ROLE')">
 										Client
 										</sec:authorize>
 										</span>
 									</div>
 								</li>
 								<li><a href="/store/profile">My Profile</a></li>
-								<li><a href="/store/profile-orders">Orders List</a></li>
+								
 								<li><a href="/store/profile-wishlist">Wishlist</a></li>
 								<li class="sub-menu-separator"></li>
 								<li><a href="<c:url value='/j_spring_security_logout'/>">
@@ -223,53 +222,14 @@
 
 					</div>
 					<div class="cart">
-						<a href="/store/profile-cart"></a><i class="icon-bag"></i><span
-							class="count">3</span><span class="subtotal">$289.68</span>
+						<a href="/store/profile-cart"></a><i class="icon-bag"></i>
 						<div class="toolbar-dropdown">
 
-							<div class="dropdown-product-item">
-								<span class="dropdown-product-remove"><i
-									class="icon-cross"></i></span><a class="dropdown-product-thumb"
-									href="/store/client/single-product"><img
-									src="${pageContext.request.contextPath}/resources/img/cart-dropdown/02.jpg"
-									alt="Product"></a>
-								<div class="dropdown-product-info">
-									<a class="dropdown-product-title" href="/store/client/single-product">Daily
-										Fabric Cap</a><span class="dropdown-product-details">2 x
-										$24.89</span>
-								</div>
-							</div>
-
-							<div class="dropdown-product-item">
-								<span class="dropdown-product-remove"><i
-									class="icon-cross"></i></span><a class="dropdown-product-thumb"
-									href="/store/client/single-product"><img
-									src="${pageContext.request.contextPath}/resources/img/cart-dropdown/03.jpg"
-									alt="Product"></a>
-								<div class="dropdown-product-info">
-									<a class="dropdown-product-title" href="/store/client/single-product">Haan
-										Crossbody</a><span class="dropdown-product-details">1 x
-										$200.00</span>
-								</div>
-							</div>
-
 							<div class="toolbar-dropdown-group">
-								<div class="column">
-									<span class="text-lg">Total:</span>
-								</div>
-								<div class="column text-right">
-									<span class="text-lg text-medium">$289.68&nbsp;</span>
-								</div>
-							</div>
 
-							<div class="toolbar-dropdown-group">
-								<div class="column">
-									<a class="btn btn-sm btn-block btn-secondary"
-										href="/store/profile-cart">View Cart</a>
-								</div>
 								<div class="column">
 									<a class="btn btn-sm btn-block btn-success"
-										href="/store/profile-cart">Checkout</a>
+										href="/store/profile-cart">View Cart</a>
 								</div>
 							</div>
 
@@ -279,12 +239,12 @@
 			</div>
 		</div>
 	</header>
-	
-	
-<c:if test="${not empty message}">
-<div class="alert alert-info alert-dismissible fade show text-center">
-<span class="alert-close" data-dismiss="alert"></span>
-<i class="icon-layers"></i>&nbsp;&nbsp;
-<strong>Info alert:</strong> ${message }
-</div>
-</c:if>
+
+
+	<c:if test="${not empty message}">
+		<div class="alert alert-info alert-dismissible fade show text-center">
+			<span class="alert-close" data-dismiss="alert"></span> <i
+				class="icon-layers"></i>&nbsp;&nbsp; <strong>Info alert:</strong>
+			${message }
+		</div>
+	</c:if>

@@ -9,6 +9,7 @@ import java.security.Principal;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
+import javax.persistence.NoResultException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -32,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.isamm.store.entities.Article;
+import com.isamm.store.entities.FavorisArticleUser;
 import com.isamm.store.entities.Role;
 import com.isamm.store.entities.User;
 import com.isamm.store.metier.UserBoutiqueMetier;
@@ -56,7 +58,7 @@ public class UserController {
 
 			return "login";
 		}
-		System.out.println(u.getEmail());
+
 		if (u.getIdUser() == null) {
 			if (u.getRoles().iterator().next().getNomRole().equals("VENDEUR_ROLE")) {
 				Role role = new Role();
@@ -85,11 +87,23 @@ public class UserController {
 		if (u.getIdUser() != null) {
 			userMetier.modifierUser(u);
 		} else {
-			userMetier.ajouterUser(u);
+			User userFind = null;
+
+			try {
+				userFind = userMetier.getUserParNom(u.getUsername());
+			} catch (NoResultException e) {
+
+			}
+			if (userFind == null) {
+				userMetier.ajouterUser(u);
+				model.addAttribute("message", "User is saved");
+			} else {
+				model.addAttribute("message", "User is not saved : Username exists");
+			}
 		}
 
 		model.addAttribute("title", "Login");
-		model.addAttribute("message", "User is saved");
+
 		logger.info("utilisateur inscrit avec succés");
 
 		return "login";
@@ -124,10 +138,10 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User u = userMetier.getUserParNom(auth.getName());
 		model.addAttribute("user", u);
-
+		model.addAttribute("favoris", userMetier.listFavoris(u.getIdUser()));
 		model.addAttribute("title", "Profile");
 		logger.info("afficher profile de l'utilisateur connecter");
-
+		model.addAttribute("favoris", userMetier.listFavoris(u.getIdUser()));
 		model.addAttribute("message", "Welcome " + u.getUsername() + " to your profile");
 
 		return "profile";
@@ -154,10 +168,25 @@ public class UserController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String nameVendeur = auth.getName();
 		User u = userMetier.getUserParNom(nameVendeur);
+		FavorisArticleUser favA = null;
+		model.addAttribute("articles", userMetier.listArticles());
+		model.addAttribute("categories", userMetier.listCategories());
+		model.addAttribute("favoris", userMetier.listFavoris(u.getIdUser()));
 
-		userMetier.ajouterFavoris(idArt, u.getIdUser());
+		try {
+			favA = userMetier.getFavoris(u.getIdUser(), idArt);
+		} catch (NoResultException e) {
 
-		return "redirect:/profile-wishlist";
+		}
+		if (favA == null) {
+			userMetier.ajouterFavoris(idArt, u.getIdUser());
+			return "redirect:/profile-wishlist";
+		} else {
+			model.addAttribute("message", "Already added to wishlist");
+
+			return "product-by-category";
+		}
+
 	}
 
 	@RequestMapping(value = "/delete-from-wishlist")

@@ -54,6 +54,12 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 
 	}
 
+	@Override
+	public Categorie getCategorieParNom(String catNom) {
+		return (Categorie) em.createQuery("select c from Categorie c where c.nomCategorie like :x")
+				.setParameter("x", catNom).getSingleResult();
+	}
+
 	/* ARTICLE */
 
 	@Override
@@ -132,6 +138,13 @@ public class BoutiqueDAOImpl implements IBoutiqueDao {
 
 		return em.createQuery("SELECT f.article FROM FavorisArticleUser f WHERE f.user.idUser like :x")
 				.setParameter("x", idUser).getResultList();
+	}
+
+	@Override
+	public FavorisArticleUser getFavoris(Long idUser, Long idArticle) {
+		Id id = new Id(idUser, idArticle);
+		return em.find(FavorisArticleUser.class, id);
+
 	}
 
 	@Override

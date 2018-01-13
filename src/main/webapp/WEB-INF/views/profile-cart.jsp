@@ -82,7 +82,7 @@
 		<div class="shopping-cart-footer">
 			<div class="column"></div>
 			<div class="column text-lg">
-				Subtotal: <span class="text-medium">${total}</span>
+				Total: <span class="text-medium">${total}DT</span>
 			</div>
 		</div>
 		<div class="shopping-cart-footer">

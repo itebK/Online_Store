@@ -9,6 +9,7 @@ import com.isamm.store.entities.Article;
 import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
 import com.isamm.store.entities.Commande;
+import com.isamm.store.entities.FavorisArticleUser;
 import com.isamm.store.entities.Panier;
 import com.isamm.store.entities.User;
 
@@ -47,6 +48,11 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 	@Override
 	public Categorie getCategorie(Long idC) {
 		return dao.getCategorie(idC);
+	}
+
+	@Override
+	public Categorie getCategorieParNom(String catNom) {
+		return dao.getCategorieParNom(catNom);
 	}
 
 	/* ARTICLE */
@@ -112,6 +118,12 @@ public class BoutiqueMetierImpl implements UserBoutiqueMetier {
 	public List<Article> listFavoris(Long idUser) {
 
 		return dao.listFavoris(idUser);
+	}
+
+	@Override
+	public FavorisArticleUser getFavoris(Long idUser, Long idArticle) {
+
+		return dao.getFavoris(idUser, idArticle);
 	}
 
 	@Override

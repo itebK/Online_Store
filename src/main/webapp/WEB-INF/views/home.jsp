@@ -12,58 +12,10 @@
 		style="background-image: url(${pageContext.request.contextPath}/resources/img/hero-slider/main-bg.jpg);">
 		<div class="owl-carousel large-controls dots-inside"
 			data-owl-carousel="{ &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 7000 }">
-			<div class="item">
-				<div class="container padding-top-3x">
-					<div class="row justify-content-center align-items-center">
-						<div
-							class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-							<div class="from-bottom">
-								<img class="d-inline-block w-150 mb-4"
-									src="${pageContext.request.contextPath}/resources/img/hero-slider/logo02.png"
-									alt="Puma">
-								<div class="h2 text-body text-normal mb-2 pt-1">Puma
-									Backpacks Collection</div>
-								<div class="h2 text-body text-normal mb-4 pb-1">
-									starting at <span class="text-bold">$37.99</span>
-								</div>
-							</div>
-							<a class="btn btn-primary scale-up delay-1"
-								href="/store/client/product-by-category">View Offers</a>
-						</div>
-						<div class="col-md-6 padding-bottom-2x mb-3">
-							<img class="d-block mx-auto"
-								src="${pageContext.request.contextPath}/resources/img/hero-slider/02.png"
-								alt="Puma Backpack">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="item">
-				<div class="container padding-top-3x">
-					<div class="row justify-content-center align-items-center">
-						<div
-							class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
-							<div class="from-bottom">
-								<img class="d-inline-block w-200 mb-4"
-									src="${pageContext.request.contextPath}/resources/img/hero-slider/logo01.png"
-									alt="Converse">
-								<div class="h2 text-body text-normal mb-2 pt-1">Chuck
-									Taylor All Star II</div>
-								<div class="h2 text-body text-normal mb-4 pb-1">
-									for only <span class="text-bold">$59.99</span>
-								</div>
-							</div>
-							<a class="btn btn-primary scale-up delay-1"
-								href="/store/client/single-product">Shop Now</a>
-						</div>
-						<div class="col-md-6 padding-bottom-2x mb-3">
-							<img class="d-block mx-auto"
-								src="${pageContext.request.contextPath}/resources/img/hero-slider/01.png"
-								alt="Chuck Taylor All Star II">
-						</div>
-					</div>
-				</div>
-			</div>
+		<c:set var="total-caroussel" value="${0}"/>
+		<c:forEach items="${articles}" var="a">
+		<c:set var="total-caroussel" value="${total=total+1}" />
+		<c:if test="${total<5}">
 			<div class="item">
 				<div class="container padding-top-3x">
 					<div class="row justify-content-center align-items-center">
@@ -71,25 +23,28 @@
 							class="col-lg-5 col-md-6 padding-bottom-2x text-md-left text-center">
 							<div class="from-bottom">
 								<img class="d-inline-block mb-4"
-									src="${pageContext.request.contextPath}/resources/img/hero-slider/logo03.png"
-									style="width: 125px;" alt="Motorola">
-								<div class="h2 text-body text-normal mb-2 pt-1">Smart
-									Watch Moto 360 2nd</div>
+									src="photoArt?idArt=${a.idArticle }"
+									style="width: 125px;" alt="${a.designation }">
+								<div class="h2 text-body text-normal mb-2 pt-1">${a.designation }</div>
 								<div class="h2 text-body text-normal mb-4 pb-1">
-									for only <span class="text-bold">$299.99</span>
+									for only <span class="text-bold">${a.prix }DT</span>
 								</div>
 							</div>
 							<a class="btn btn-primary scale-up delay-1"
-								href="/store/client/single-product">Shop Now</a>
+								href="/store/add-to-cart?idArt=${a.idArticle }">Shop Now</a>
 						</div>
 						<div class="col-md-6 padding-bottom-2x mb-3">
 							<img class="d-block mx-auto"
-								src="${pageContext.request.contextPath}/resources/img/hero-slider/03.png"
-								alt="Moto 360">
+								src="photoArt?idArt=${a.idArticle }"
+								alt="${a.designation }">
 						</div>
 					</div>
 				</div>
 			</div>
+			</c:if>
+			</c:forEach>
+			
+			
 		</div>
 	</section>
 	<!-- Top Categories-->
@@ -100,7 +55,7 @@
 			<div class="col-md-4 col-sm-6">
 			
 				<div class="card mb-30">
-					<a class="card-img-tiles" href="/store/client/product-by-category">
+					<a class="card-img-tiles" href="/store/client/product-by-category?idCat=${cat.idCategorie }">
 						<div class="inner">
 							<div class="main-img">
 							
@@ -114,8 +69,8 @@
 					</a>
 					<div class="card-body text-center">
 						<h4 class="card-title">${cat.nomCategorie}</h4>
-						<p class="text-muted">Starting from $49.99</p>
-						<a class="btn btn-outline-primary btn-sm" href="/store/client/product-by-category">View
+						
+						<a class="btn btn-outline-primary btn-sm" href="/store/client/product-by-category?idCat=${cat.idCategorie }"">View
 							Products</a>
 					</div>
 				</div>
@@ -139,26 +94,26 @@
 			<div class="grid-item">
 				<div class="product-card">
 					<div class="product-badge text-danger">${a.quantite} remain in Stock</div>
-					<a class="product-thumb" href="/store/client/single-product"><c:if test="${a.idArticle!=null}">
+					<a class="product-thumb" href="/store/client/single-product?idArt=${a.idArticle}"><c:if test="${a.idArticle!=null}">
              				<img src="photoArt?idArt=${a.idArticle }" alt="Product"/>
            			</c:if></a>
 					<h3 class="product-title">
-						<a href="/store/client/single-product">${a.designation }</a>
+						<a href="/store/client/single-product?idArt=${a.idArticle}">${a.designation }</a>
 					</h3>
 					<h4 class="product-price">
 						
 						${a.prix }TND
 					</h4>
 					<div class="product-buttons">
-						<button class="btn btn-outline-secondary btn-sm btn-wishlist"
-							data-toggle="tooltip" title="Whishlist">
+						<a class="btn btn-outline-secondary btn-sm btn-wishlist" 
+							data-toggle="tooltip" title="Whishlist" href="/store/add-to-wishlist?idArt=${a.idArticle }">
 							<i class="icon-heart"></i>
-						</button>
-						<button class="btn btn-outline-primary btn-sm" data-toast
+						</a>
+						<a class="btn btn-outline-primary btn-sm" data-toast
 							data-toast-type="success" data-toast-position="topRight"
 							data-toast-icon="icon-circle-check" data-toast-title="Product"
-							data-toast-message="successfuly added to cart!">Add to
-							Cart</button>
+							data-toast-message="successfuly added to cart!" href="/store/add-to-cart?idArt=${a.idArticle }">Add to
+							Cart</a>
 					</div>
 				</div>
 			</div>

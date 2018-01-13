@@ -62,12 +62,11 @@
             </aside>
         
                       <nav class="list-group">
-            <a class="list-group-item with-badge" href="/store/profile-orders"><i class="icon-bag"></i>
-            Orders<span class="badge badge-primary badge-pill">6</span></a>
+            
             <a class="list-group-item" href="/store/profile"><i class="icon-head"></i>
             Profile</a>
 <a class="list-group-item with-badge active" href="/store/profile-wishlist"><i class="icon-heart"></i>
-            Wishlist<span class="badge badge-primary badge-pill">3</span></a>
+            Wishlist<span class="badge badge-primary badge-pill">${favoris.size()}</span></a>
    			</nav>
           </div>
           <div class="col-lg-8">
@@ -105,9 +104,7 @@
               </table>
             </div>
             <hr class="mb-4">
-            <label class="custom-control custom-checkbox d-block">
-              <input class="custom-control-input" type="checkbox" checked><span class="custom-control-indicator"></span><span class="custom-control-description">Inform me when item from my wishlist is available</span>
-            </label>
+            
           </div>
         </div>
       </div>

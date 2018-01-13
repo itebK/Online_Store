@@ -6,6 +6,7 @@ import com.isamm.store.entities.Article;
 import com.isamm.store.entities.Boutique;
 import com.isamm.store.entities.Categorie;
 import com.isamm.store.entities.Commande;
+import com.isamm.store.entities.FavorisArticleUser;
 import com.isamm.store.entities.Panier;
 import com.isamm.store.entities.User;
 
@@ -16,6 +17,8 @@ public interface IBoutiqueDao {
 	public List<Categorie> listCategories();
 
 	public Categorie getCategorie(Long idC);
+
+	public Categorie getCategorieParNom(String catNom);
 
 	public void supprimerCategorie(Long idCat);
 
@@ -43,6 +46,8 @@ public interface IBoutiqueDao {
 	public void modifierArticle(Article a);
 
 	public List<Article> listFavoris(Long idUser);
+
+	public FavorisArticleUser getFavoris(Long idUser, Long idArticle);
 
 	public void ajouterFavoris(Long idArticle, Long idUser);
 

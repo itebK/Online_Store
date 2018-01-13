@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
+import javax.persistence.NoResultException;
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
@@ -34,6 +35,7 @@ public class VendeurController {
 
 	@RequestMapping(value = "/add-category", method = RequestMethod.GET)
 	public String categorie(Locale locale, Model model) {
+
 		model.addAttribute("categorie", new Categorie());
 		model.addAttribute("title", "Add category");
 		return "category-add";
@@ -92,6 +94,7 @@ public class VendeurController {
 			c.setPhoto(file.getBytes());
 			c.setNomPhoto(file.getOriginalFilename());
 		}
+		Categorie cate = null;
 		if (c.getIdCategorie() != null) {
 			if (file.isEmpty()) {
 				Categorie cat = userMetier.getCategorie(c.getIdCategorie());
@@ -99,13 +102,25 @@ public class VendeurController {
 			}
 			userMetier.modifierCategorie(c);
 		} else
-			userMetier.ajouterCategorie(c);
-		model.addAttribute("categorie", new Categorie());
-		model.addAttribute("categories", userMetier.listCategories());
-		model.addAttribute("message", "Category is saved");
-		model.addAttribute("title", "Home");
+			try {
+				cate = userMetier.getCategorieParNom(c.getNomCategorie());
+			} catch (NoResultException e) {
 
-		return "home";
+			}
+		if (cate == null) {
+			userMetier.ajouterCategorie(c);
+			model.addAttribute("message", "Category is saved");
+			model.addAttribute("categorie", new Categorie());
+			model.addAttribute("categories", userMetier.listCategories());
+
+			model.addAttribute("title", "Home");
+
+			return "home";
+		} else {
+			model.addAttribute("message", "Category exists");
+			return "category-add";
+		}
+
 	}
 
 	/* AJOUTER ARTICLE */
